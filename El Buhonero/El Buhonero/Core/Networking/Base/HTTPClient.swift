@@ -32,7 +32,17 @@ extension HTTPClient {
                 urlRequest.httpBody = body
             }
 
-            let request = AF.request(urlRequest).serializingDecodable(responseModel)
+            // Configure session to avoid HTTP/3 issues
+            let configuration = URLSessionConfiguration.default
+            configuration.timeoutIntervalForRequest = 30
+            configuration.timeoutIntervalForResource = 60
+            // Disable HTTP/3 to avoid QUIC connection issues
+            configuration.httpShouldUsePipelining = false
+            configuration.httpMaximumConnectionsPerHost = 1
+            
+            let session = Session(configuration: configuration)
+            
+            let request = session.request(urlRequest).serializingDecodable(responseModel)
             
             guard let response = await request.response.response else {
                 return .failure(.noResponse)

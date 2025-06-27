@@ -24,14 +24,7 @@ struct BCategory: Codable {
     let name: Name
     let slug: Slug
     let image: String
-    let creationAt, updatedAt: At
-}
-
-enum At: String, Codable {
-    case the20250627T080736000Z = "2025-06-27T08:07:36.000Z"
-    case the20250627T080737000Z = "2025-06-27T08:07:37.000Z"
-    case the20250627T080738000Z = "2025-06-27T08:07:38.000Z"
-    case the20250627T081342000Z = "2025-06-27T08:13:42.000Z"
+    let creationAt, updatedAt: String
 }
 
 enum Name: String, Codable {

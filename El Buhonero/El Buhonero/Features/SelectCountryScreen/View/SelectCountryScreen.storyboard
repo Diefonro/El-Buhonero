@@ -19,29 +19,101 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTR-TE-gaC" userLabel="ContainerView">
                                 <rect key="frame" x="0.0" y="118" width="393" height="666"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Desde dónde nos visitas?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-al-aTY">
+                                        <rect key="frame" x="50" y="221.66666666666669" width="293" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQ8-KO-YWU" userLabel="CountriesView">
-                                        <rect key="frame" x="50" y="233" width="293" height="200"/>
+                                        <rect key="frame" x="50" y="280.66666666666669" width="293" height="105"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="E8e-Zq-Efo">
-                                                <rect key="frame" x="0.0" y="0.0" width="293" height="200"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="E8e-Zq-Efo">
+                                                <rect key="frame" x="0.0" y="0.0" width="293" height="105"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-KT-9hA" userLabel="CountryAView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="293" height="100"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vli-5W-MLI">
+                                                                <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="countryAButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nri-HQ-ok1"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇮🇲 Isla de Man" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjX-zF-ytm">
+                                                                <rect key="frame" x="88.666666666666657" y="14.666666666666627" width="115.66666666666666" height="20.333333333333329"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
                                                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="100" id="BPi-uC-gDw"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Vli-5W-MLI" secondAttribute="trailing" id="1vs-cM-Rne"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Vli-5W-MLI" secondAttribute="bottom" id="5iC-vM-3LM"/>
+                                                            <constraint firstAttribute="height" constant="50" id="BPi-uC-gDw"/>
+                                                            <constraint firstItem="kjX-zF-ytm" firstAttribute="centerY" secondItem="NA1-KT-9hA" secondAttribute="centerY" id="Gp2-lq-s2L"/>
+                                                            <constraint firstItem="Vli-5W-MLI" firstAttribute="leading" secondItem="NA1-KT-9hA" secondAttribute="leading" id="TAt-Wq-1A7"/>
+                                                            <constraint firstItem="kjX-zF-ytm" firstAttribute="centerX" secondItem="NA1-KT-9hA" secondAttribute="centerX" id="pxg-D8-v7T"/>
+                                                            <constraint firstItem="Vli-5W-MLI" firstAttribute="top" secondItem="NA1-KT-9hA" secondAttribute="top" id="qNw-UB-4ya"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDU-9F-g55" userLabel="CountryBView">
-                                                        <rect key="frame" x="0.0" y="100" width="293" height="100"/>
-                                                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                                                        <rect key="frame" x="0.0" y="55" width="293" height="50"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8k-NK-cmS">
+                                                                <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="countryBButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hlP-Dv-l89"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇰🇮 Kiribati" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9a-bH-lrW">
+                                                                <rect key="frame" x="105.33333333333334" y="14.666666666666627" width="82.333333333333343" height="20.333333333333329"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="M9a-bH-lrW" firstAttribute="centerY" secondItem="lDU-9F-g55" secondAttribute="centerY" id="AIj-w3-cb1"/>
+                                                            <constraint firstAttribute="trailing" secondItem="l8k-NK-cmS" secondAttribute="trailing" id="GBs-K1-bVn"/>
+                                                            <constraint firstAttribute="height" constant="50" id="NQA-63-adm"/>
+                                                            <constraint firstItem="M9a-bH-lrW" firstAttribute="centerX" secondItem="lDU-9F-g55" secondAttribute="centerX" id="cS6-wo-dpg"/>
+                                                            <constraint firstItem="l8k-NK-cmS" firstAttribute="top" secondItem="lDU-9F-g55" secondAttribute="top" id="fiO-NS-OtO"/>
+                                                            <constraint firstAttribute="bottom" secondItem="l8k-NK-cmS" secondAttribute="bottom" id="lxX-Qb-qyI"/>
+                                                            <constraint firstItem="l8k-NK-cmS" firstAttribute="leading" secondItem="lDU-9F-g55" secondAttribute="leading" id="qBW-kW-RP3"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="X0G-Pe-DBy"/>
                                             <constraint firstAttribute="bottom" secondItem="E8e-Zq-Efo" secondAttribute="bottom" id="d2q-3t-3Pp"/>
                                             <constraint firstItem="E8e-Zq-Efo" firstAttribute="top" secondItem="WQ8-KO-YWU" secondAttribute="top" id="hKJ-M4-mEW"/>
                                             <constraint firstItem="E8e-Zq-Efo" firstAttribute="leading" secondItem="WQ8-KO-YWU" secondAttribute="leading" id="kKY-58-8R9"/>
@@ -49,16 +121,19 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Hvc-al-aTY" firstAttribute="leading" secondItem="gTR-TE-gaC" secondAttribute="leading" constant="50" id="1i5-Ct-OTn"/>
                                     <constraint firstItem="WQ8-KO-YWU" firstAttribute="centerY" secondItem="gTR-TE-gaC" secondAttribute="centerY" id="Gce-8a-TKh"/>
+                                    <constraint firstItem="WQ8-KO-YWU" firstAttribute="top" secondItem="Hvc-al-aTY" secondAttribute="bottom" constant="35" id="SCu-3D-6k9"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hvc-al-aTY" secondAttribute="trailing" constant="50" id="W9M-cq-0bQ"/>
                                     <constraint firstItem="WQ8-KO-YWU" firstAttribute="leading" secondItem="gTR-TE-gaC" secondAttribute="leading" constant="50" id="oCP-Sd-4Pw"/>
                                     <constraint firstAttribute="trailing" secondItem="WQ8-KO-YWU" secondAttribute="trailing" constant="50" id="v7u-5K-DOf"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="gTR-TE-gaC" secondAttribute="bottom" id="Jvp-vJ-8Z7"/>
                             <constraint firstItem="gTR-TE-gaC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="dWO-OC-bOH"/>
@@ -73,14 +148,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBrownColor">
             <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
