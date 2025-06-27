@@ -53,7 +53,7 @@ class HomeScreenViewModel {
                     title: $0.title,
                     price: Double($0.price),
                     imageUrl: $0.images.first ?? "",
-                    category: $0.category.name.rawValue,
+                    category: $0.category.name,
                     description: $0.description
                 )
             }

@@ -15,8 +15,8 @@ class ProductCardCell: UICollectionViewCell {
         return view
     }()
     
-    private let productImageView: UIImageView = {
-        let imageView = UIImageView()
+    private let productImageView: LoadingImageView = {
+        let imageView = LoadingImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 12
@@ -77,8 +77,11 @@ class ProductCardCell: UICollectionViewCell {
     func configure(with product: HomeProduct) {
         titleLabel.text = product.title
         priceLabel.text = String(format: "$%.2f", product.price)
-        if let url = URL(string: product.imageUrl) {
-            productImageView.setImage(from: url)
-        }
+        productImageView.loadImage(from: product.imageUrl)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        productImageView.cleanup()
     }
 } 

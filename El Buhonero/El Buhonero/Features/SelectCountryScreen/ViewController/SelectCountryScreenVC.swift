@@ -17,8 +17,16 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo {
     var viewModel: SelectCountryViewModel?
     var onCountryChanged: (() -> Void)?
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupActivityIndicator()
+    }
+    
+    private func setupActivityIndicator() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .white
     }
     
     func setCoordinator(coordinator: SelectCountryScreenCoordinator?) {
@@ -35,10 +43,12 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo {
     
     @IBAction func countryAButtonAction(_ sender: Any) {
         print("Isla de Man Selected")
+        activityIndicator.startAnimating()
         DataManager.shared.setSelectedCountry(.countryA)
         Task {
             await viewModel?.getStoreAProducts()
             DispatchQueue.main.async { [weak self] in
+                self?.activityIndicator.stopAnimating()
                 self?.onCountryChanged?()
                 if DataManager.shared.isUserLoggedIn() {
                     self?.coordinator?.pop(animated: true)
@@ -51,10 +61,12 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo {
     
     @IBAction func countryBButtonAction(_ sender: Any) {
         print("Kiribati Selected")
+        activityIndicator.startAnimating()
         DataManager.shared.setSelectedCountry(.countryB)
         Task {
             await viewModel?.getStoreBProducts()
             DispatchQueue.main.async { [weak self] in
+                self?.activityIndicator.stopAnimating()
                 self?.onCountryChanged?()
                 if DataManager.shared.isUserLoggedIn() {
                     self?.coordinator?.pop(animated: true)

@@ -120,10 +120,16 @@
                                             <constraint firstAttribute="trailing" secondItem="E8e-Zq-Efo" secondAttribute="trailing" id="vj0-h4-n0q"/>
                                         </constraints>
                                     </view>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="jwT-Ck-uyy">
+                                        <rect key="frame" x="186.66666666666666" y="415.66666666666663" width="20" height="20"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Hvc-al-aTY" firstAttribute="leading" secondItem="gTR-TE-gaC" secondAttribute="leading" constant="50" id="1i5-Ct-OTn"/>
+                                    <constraint firstItem="jwT-Ck-uyy" firstAttribute="centerX" secondItem="gTR-TE-gaC" secondAttribute="centerX" id="Ef5-nu-f8u"/>
+                                    <constraint firstItem="jwT-Ck-uyy" firstAttribute="top" secondItem="WQ8-KO-YWU" secondAttribute="bottom" constant="30" id="FpH-11-xSz"/>
                                     <constraint firstItem="WQ8-KO-YWU" firstAttribute="centerY" secondItem="gTR-TE-gaC" secondAttribute="centerY" id="Gce-8a-TKh"/>
                                     <constraint firstItem="WQ8-KO-YWU" firstAttribute="top" secondItem="Hvc-al-aTY" secondAttribute="bottom" constant="35" id="SCu-3D-6k9"/>
                                     <constraint firstAttribute="trailing" secondItem="Hvc-al-aTY" secondAttribute="trailing" constant="50" id="W9M-cq-0bQ"/>
@@ -141,6 +147,9 @@
                             <constraint firstItem="gTR-TE-gaC" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="xya-jb-pWY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="jwT-Ck-uyy" id="cUb-cF-YhS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -149,7 +158,7 @@
     </scenes>
     <resources>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

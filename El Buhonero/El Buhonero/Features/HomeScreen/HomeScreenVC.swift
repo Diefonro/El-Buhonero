@@ -73,6 +73,7 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
         collectionView.register(BannerCell.self, forCellWithReuseIdentifier: BannerCell.reuseIdentifier)
         collectionView.register(ProductCardCell.self, forCellWithReuseIdentifier: ProductCardCell.reuseIdentifier)
         collectionView.register(SeeMoreCell.self, forCellWithReuseIdentifier: SeeMoreCell.reuseIdentifier)
+        collectionView.register(CategoryHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryHeaderCell.reuseIdentifier)
     }
     
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
@@ -82,9 +83,9 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
             case .banner:
                 return Self.bannerSectionLayout()
             case .category:
-                return Self.productSectionLayout()
+                return Self.productSectionLayout(withHeader: true)
             case .uncategorized:
-                return Self.productSectionLayout()
+                return Self.productSectionLayout(withHeader: true)
             }
         }
     }
@@ -101,7 +102,7 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
         return section
     }
     
-    private static func productSectionLayout() -> NSCollectionLayoutSection {
+    private static func productSectionLayout(withHeader: Bool) -> NSCollectionLayoutSection {
         let cardWidth: CGFloat = 150
         let cardHeight: CGFloat = 300
         let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(cardWidth), heightDimension: .absolute(cardHeight))
@@ -112,6 +113,14 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 32, trailing: 0)
+        
+        // Add header for category sections
+        if withHeader {
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+            let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+            section.boundarySupplementaryItems = [header]
+        }
+        
         return section
     }
     

@@ -49,6 +49,24 @@ extension HomeScreenVC: UICollectionViewDataSource, UICollectionViewDelegate {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let viewModel = viewModel else {
+            return UICollectionReusableView()
+        }
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CategoryHeaderCell.reuseIdentifier, for: indexPath) as! CategoryHeaderCell
+            
+            if let categoryName = viewModel.categoryName(for: indexPath.section) {
+                header.configure(with: categoryName)
+            }
+            
+            return header
+        }
+        
+        return UICollectionReusableView()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let viewModel = viewModel else { return }
         if viewModel.isSeeMoreCell(at: indexPath) {
