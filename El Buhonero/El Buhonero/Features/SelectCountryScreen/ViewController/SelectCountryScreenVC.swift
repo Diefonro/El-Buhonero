@@ -34,6 +34,7 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo {
     
     @IBAction func countryAButtonAction(_ sender: Any) {
         print("Isla de Man Selected")
+        DataManager.shared.setSelectedCountry(.countryA)
         Task {
             await viewModel?.getStoreAProducts()
         }
@@ -42,6 +43,7 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo {
     
     @IBAction func countryBButtonAction(_ sender: Any) {
         print("Kiribati Selected")
+        DataManager.shared.setSelectedCountry(.countryB)
         Task {
             await viewModel?.getStoreBProducts()
         }

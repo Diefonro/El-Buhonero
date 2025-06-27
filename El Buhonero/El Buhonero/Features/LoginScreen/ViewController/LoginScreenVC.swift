@@ -23,6 +23,7 @@ class LoginScreenVC: UIViewController, StoryboardInfo {
     @IBOutlet weak var googleLoginButton: UIButton!
     @IBOutlet weak var appleLoginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +45,13 @@ class LoginScreenVC: UIViewController, StoryboardInfo {
         usernameTextField.borderStyle = .roundedRect
         usernameTextField.autocorrectionType = .no
         usernameTextField.autocapitalizationType = .none
+        usernameTextField.delegate = self
         
         passwordTextField.placeholder = "Password"
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.delegate = self
         
-        // Configure buttons
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = .systemBlue
         loginButton.setTitleColor(.white, for: .normal)
@@ -69,6 +71,9 @@ class LoginScreenVC: UIViewController, StoryboardInfo {
         errorLabel.textAlignment = .center
         errorLabel.numberOfLines = 0
         errorLabel.isHidden = true
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .white
     }
     
     private func setupViewModel() {
@@ -88,13 +93,20 @@ class LoginScreenVC: UIViewController, StoryboardInfo {
     
     // MARK: - Actions
     @IBAction func loginButtonTapped(_ sender: Any) {
-        guard let username = usernameTextField.text, !username.isEmpty,
-              let password = passwordTextField.text, !password.isEmpty else {
-            showError(message: "Please enter both username and password")
+        guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !username.isEmpty else {
+            showError(message: "Please enter a username")
+            return
+        }
+        
+        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !password.isEmpty else {
+            showError(message: "Please enter a password")
             return
         }
         
         hideError()
+        startLoading()
         viewModel?.login(username: username, password: password)
     }
     
@@ -112,14 +124,28 @@ class LoginScreenVC: UIViewController, StoryboardInfo {
     private func showError(message: String) {
         errorLabel.text = message
         errorLabel.isHidden = false
+        stopLoading()
     }
     
     private func hideError() {
         errorLabel.isHidden = true
+        stopLoading()
     }
     
     private func navigateToHome() {
         loginCoordinator?.pushToHomeScreen()
+    }
+    
+    private func startLoading() {
+        activityIndicator.startAnimating()
+        loginButton.isEnabled = false
+        loginButton.setTitle("Logging in...", for: .disabled)
+    }
+    
+    private func stopLoading() {
+        activityIndicator.stopAnimating()
+        loginButton.isEnabled = true
+        loginButton.setTitle("Login", for: .normal)
     }
 }
 
@@ -133,5 +159,9 @@ extension LoginScreenVC: UITextFieldDelegate {
             loginButtonTapped(loginButton as Any)
         }
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        hideError()
     }
 } 

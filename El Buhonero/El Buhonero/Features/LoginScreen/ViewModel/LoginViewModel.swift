@@ -26,6 +26,7 @@ class LoginViewModel {
     
     // MARK: - Private Methods
     private func validateCredentials(username: String, password: String) -> Bool {
-        return username == "diefonroRocks" && password == "password123"
+        return !username.isEmpty && !password.isEmpty
+//        return username == "diefonroRocks" && password == "password123"
     }
 } 
