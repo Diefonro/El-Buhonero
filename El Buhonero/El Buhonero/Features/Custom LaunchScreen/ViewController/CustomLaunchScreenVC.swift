@@ -40,7 +40,7 @@ class CustomLaunchScreenVC: UIViewController, StoryboardInfo, Coordinating {
         } completion: { _ in
             if let countriesScreen = UIStoryboard(name: SelectCountryScreenVC.storyboard, bundle: nil)
                 .instantiateViewController(withIdentifier: SelectCountryScreenVC.identifier) as? SelectCountryScreenVC {
-                countriesScreen.setCoordinator(coordinator: self.coordinator)
+                countriesScreen.setCoordinator(coordinator: SelectCountryScreenCoordinator(coordinator: self.coordinator))
                 countriesScreen.setViewModel(viewModel: SelectCountryViewModel())
                 self.coordinator?.push(viewController: countriesScreen, animated: true)
             }
