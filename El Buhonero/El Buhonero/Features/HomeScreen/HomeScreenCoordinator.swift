@@ -1,5 +1,5 @@
 //
-//  LoginScreenCoordinator.swift
+//  HomeScreenCoordinator.swift
 //  El Buhonero
 //
 //  Created by Andrés Fonseca on 27/06/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginScreenCoordinator: Coordinating {
+class HomeScreenCoordinator: Coordinating {
     var coordinator: Coordinator?
     
     init(coordinator: Coordinator?) {
@@ -38,12 +38,13 @@ class LoginScreenCoordinator: Coordinating {
         self.coordinator?.disableDragPopGesture()
     }
     
-    func pushToHomeScreen() {
-        if let homeScreen = UIStoryboard(name: HomeScreenVC.storyboard, bundle: nil)
-            .instantiateViewController(withIdentifier: HomeScreenVC.identifier) as? HomeScreenVC {
-            homeScreen.setCoordinator(coordinator: HomeScreenCoordinator(coordinator: self.coordinator))
-            homeScreen.setViewModel(viewModel: HomeScreenViewModel())
-            self.coordinator?.push(viewController: homeScreen, animated: true)
-        }
+    func presentSelectCountryScreen(onCountryChanged: @escaping () -> Void) {
+        let storyboard = UIStoryboard(name: SelectCountryScreenVC.storyboard, bundle: nil)
+        guard let selectCountryVC = storyboard.instantiateViewController(withIdentifier: SelectCountryScreenVC.identifier) as? SelectCountryScreenVC else { return }
+        let selectCountryCoordinator = SelectCountryScreenCoordinator(coordinator: self.coordinator)
+        selectCountryVC.setCoordinator(coordinator: selectCountryCoordinator)
+        selectCountryVC.setViewModel(viewModel: SelectCountryViewModel())
+        selectCountryVC.onCountryChanged = onCountryChanged
+        self.coordinator?.push(viewController: selectCountryVC, animated: true)
     }
-} 
+}

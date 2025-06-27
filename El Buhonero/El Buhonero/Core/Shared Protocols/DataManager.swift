@@ -20,6 +20,33 @@ class DataManager {
     var storeAData: StoreAModel = []
     var storeBData: StoreBModel = []
     
+    // MARK: - Login State Management
+    private var isLoggedIn: Bool = false
+    private var savedUsername: String = ""
+    private var savedPassword: String = ""
+    
+    func setLoginState(loggedIn: Bool, username: String = "", password: String = "") {
+        self.isLoggedIn = loggedIn
+        if loggedIn {
+            self.savedUsername = username
+            self.savedPassword = password
+        }
+    }
+    
+    func isUserLoggedIn() -> Bool {
+        return isLoggedIn
+    }
+    
+    func getSavedCredentials() -> (username: String, password: String) {
+        return (savedUsername, savedPassword)
+    }
+    
+    func clearLoginState() {
+        isLoggedIn = false
+        savedUsername = ""
+        savedPassword = ""
+    }
+    
     // MARK: - Helper Methods
     func setSelectedCountry(_ country: SelectedCountry) {
         self.selectedCountry = country

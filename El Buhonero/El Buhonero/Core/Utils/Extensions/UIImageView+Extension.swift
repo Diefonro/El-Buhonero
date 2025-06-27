@@ -14,4 +14,8 @@ extension UIImageView {
             self.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         }, completion: nil)
     }
+    
+    func setImage(from url: URL) {
+        self.kf.setImage(with: url)
+    }
 }

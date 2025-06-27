@@ -15,6 +15,7 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo {
     static var identifier = "SelectCountryScreenVC"
     
     var viewModel: SelectCountryViewModel?
+    var onCountryChanged: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,15 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo {
         DataManager.shared.setSelectedCountry(.countryA)
         Task {
             await viewModel?.getStoreAProducts()
+            DispatchQueue.main.async { [weak self] in
+                self?.onCountryChanged?()
+                if DataManager.shared.isUserLoggedIn() {
+                    self?.coordinator?.pop(animated: true)
+                } else {
+                    self?.goToLogin()
+                }
+            }
         }
-        goToLogin()
     }
     
     @IBAction func countryBButtonAction(_ sender: Any) {
@@ -46,8 +54,15 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo {
         DataManager.shared.setSelectedCountry(.countryB)
         Task {
             await viewModel?.getStoreBProducts()
+            DispatchQueue.main.async { [weak self] in
+                self?.onCountryChanged?()
+                if DataManager.shared.isUserLoggedIn() {
+                    self?.coordinator?.pop(animated: true)
+                } else {
+                    self?.goToLogin()
+                }
+            }
         }
-        goToLogin()
     }
     
 }
