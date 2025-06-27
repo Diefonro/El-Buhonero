@@ -8,17 +8,16 @@
 import UIKit
 
 class SelectCountryScreenVC: UIViewController, StoryboardInfo, Coordinating {
-   
+    
     var coordinator: Coordinator?
     
     static var storyboard = "SelectCountryScreen"
     static var identifier = "SelectCountryScreenVC"
     
     var viewModel: SelectCountryViewModel?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fetchStores()
     }
     
     func setCoordinator(coordinator: Coordinator?) {
@@ -28,11 +27,19 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo, Coordinating {
     func setViewModel(viewModel: SelectCountryViewModel) {
         self.viewModel = viewModel
     }
-
-    func fetchStores() {
+    
+    @IBAction func countryAButtonAction(_ sender: Any) {
+        print("Isla de Man Selected")
         Task {
             await viewModel?.getStoreAProducts()
+        }
+    }
+    
+    @IBAction func countryBButtonAction(_ sender: Any) {
+        print("Kiribati Selected")
+        Task {
             await viewModel?.getStoreBProducts()
         }
     }
+    
 }

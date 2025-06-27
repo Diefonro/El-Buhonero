@@ -16,7 +16,9 @@ class SelectCountryViewModel {
         let result = await storesService.getStoreAProducts()
         switch result {
         case .success(let data):
-            print("SUCCESS DATA: \(data)")
+            print("StoreA Success")
+            DataManager.shared.storeAData = data
+            return
         case .failure(let error):
             print("StoreA fetch error")
             AppError.handle(error: error)
@@ -28,7 +30,8 @@ class SelectCountryViewModel {
         let result = await storesService.getStoreBProducts()
         switch result {
         case .success(let data):
-            print("SUCCESS DATA: \(data)")
+            print("Store B Success")
+            DataManager.shared.storeBData = data
         case .failure(let error):
             print("StoreB fetch error")
             AppError.handle(error: error)
