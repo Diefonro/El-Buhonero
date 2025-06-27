@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login ScreenVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="LoginScreenVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="LoginScreenVC" customModule="El_Buhonero" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" userLabel="MainView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTR-TE-gaC" userLabel="ContainerView">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-al-aTY">
+                                        <rect key="frame" x="50" y="49.999999999999993" width="293" height="28.666666666666664"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to continue" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="subtitle-label">
+                                        <rect key="frame" x="50" y="88.666666666666657" width="293" height="19.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.69999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="login-form-view">
+                                        <rect key="frame" x="50" y="148" width="293" height="180"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="login-stack-view">
+                                                <rect key="frame" x="0.0" y="0.0" width="293" height="180"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="username-textfield">
+                                                        <rect key="frame" x="0.0" y="0.0" width="293" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="username-delegate"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="password-textfield">
+                                                        <rect key="frame" x="0.0" y="49" width="293" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="password-delegate"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="login-button">
+                                                        <rect key="frame" x="0.0" y="98" width="293" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="login-button-height"/>
+                                                        </constraints>
+                                                        <color key="tintColor" systemColor="systemBrownColor"/>
+                                                        <state key="normal" title="Login"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="loginButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="login-button-action"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="error-label">
+                                                        <rect key="frame" x="0.0" y="163" width="293" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="login-stack-view" secondAttribute="bottom" id="login-stack-bottom"/>
+                                            <constraint firstItem="login-stack-view" firstAttribute="leading" secondItem="login-form-view" secondAttribute="leading" id="login-stack-leading"/>
+                                            <constraint firstItem="login-stack-view" firstAttribute="top" secondItem="login-form-view" secondAttribute="top" id="login-stack-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="login-stack-view" secondAttribute="trailing" id="login-stack-trailing"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="social-login-view">
+                                        <rect key="frame" x="50" y="378" width="293" height="110"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="social-stack-view">
+                                                <rect key="frame" x="0.0" y="0.0" width="293" height="110"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="google-login-button">
+                                                        <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="google-button-height"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Login with Google"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Login with Google"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="googleLoginButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="google-button-action"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apple-login-button">
+                                                        <rect key="frame" x="0.0" y="60" width="293" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="apple-button-height"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Login with Apple"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Login with Apple"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="appleLoginButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="apple-button-action"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="social-stack-view" secondAttribute="bottom" id="social-stack-bottom"/>
+                                            <constraint firstItem="social-stack-view" firstAttribute="leading" secondItem="social-login-view" secondAttribute="leading" id="social-stack-leading"/>
+                                            <constraint firstItem="social-stack-view" firstAttribute="top" secondItem="social-login-view" secondAttribute="top" id="social-stack-top"/>
+                                            <constraint firstAttribute="trailing" secondItem="social-stack-view" secondAttribute="trailing" id="social-stack-trailing"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="login-form-view" firstAttribute="leading" secondItem="gTR-TE-gaC" secondAttribute="leading" constant="50" id="login-form-leading"/>
+                                    <constraint firstItem="login-form-view" firstAttribute="top" secondItem="subtitle-label" secondAttribute="bottom" constant="40" id="login-form-top"/>
+                                    <constraint firstAttribute="trailing" secondItem="login-form-view" secondAttribute="trailing" constant="50" id="login-form-trailing"/>
+                                    <constraint firstItem="social-login-view" firstAttribute="leading" secondItem="gTR-TE-gaC" secondAttribute="leading" constant="50" id="social-login-leading"/>
+                                    <constraint firstItem="social-login-view" firstAttribute="top" secondItem="login-form-view" secondAttribute="bottom" constant="50" id="social-login-top"/>
+                                    <constraint firstAttribute="trailing" secondItem="social-login-view" secondAttribute="trailing" constant="50" id="social-login-trailing"/>
+                                    <constraint firstItem="subtitle-label" firstAttribute="leading" secondItem="gTR-TE-gaC" secondAttribute="leading" constant="50" id="subtitle-leading"/>
+                                    <constraint firstItem="subtitle-label" firstAttribute="top" secondItem="Hvc-al-aTY" secondAttribute="bottom" constant="10" id="subtitle-top"/>
+                                    <constraint firstAttribute="trailing" secondItem="subtitle-label" secondAttribute="trailing" constant="50" id="subtitle-trailing"/>
+                                    <constraint firstItem="Hvc-al-aTY" firstAttribute="leading" secondItem="gTR-TE-gaC" secondAttribute="leading" constant="50" id="title-leading"/>
+                                    <constraint firstItem="Hvc-al-aTY" firstAttribute="top" secondItem="gTR-TE-gaC" secondAttribute="top" constant="50" id="title-top"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hvc-al-aTY" secondAttribute="trailing" constant="50" id="title-trailing"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="gTR-TE-gaC" secondAttribute="bottom" id="container-bottom"/>
+                            <constraint firstItem="gTR-TE-gaC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="container-leading"/>
+                            <constraint firstItem="gTR-TE-gaC" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="container-top"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gTR-TE-gaC" secondAttribute="trailing" id="container-trailing"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appleLoginButton" destination="apple-login-button" id="apple-button-outlet"/>
+                        <outlet property="errorLabel" destination="error-label" id="error-label-outlet"/>
+                        <outlet property="googleLoginButton" destination="google-login-button" id="google-button-outlet"/>
+                        <outlet property="loginButton" destination="login-button" id="login-button-outlet"/>
+                        <outlet property="passwordTextField" destination="password-textfield" id="password-outlet"/>
+                        <outlet property="usernameTextField" destination="username-textfield" id="username-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31" y="-27"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,5 +1,5 @@
 //
-//  SelectCountryScreenCoordinator.swift
+//  LoginScreenCoordinator.swift
 //  El Buhonero
 //
 //  Created by Andrés Fonseca on 27/06/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectCountryScreenCoordinator: Coordinating {
+class LoginScreenCoordinator: Coordinating {
     var coordinator: Coordinator?
     
     init(coordinator: Coordinator?) {
@@ -38,12 +38,10 @@ class SelectCountryScreenCoordinator: Coordinating {
         self.coordinator?.disableDragPopGesture()
     }
     
-    func pushToLogin() {
-        if let loginScreen = UIStoryboard(name: LoginScreenVC.storyboard, bundle: nil)
-            .instantiateViewController(withIdentifier: LoginScreenVC.identifier) as? LoginScreenVC {
-            loginScreen.setCoordinator(coordinator: LoginScreenCoordinator(coordinator: self.coordinator))
-            loginScreen.setViewModel(viewModel: LoginViewModel())
-            self.coordinator?.push(viewController: loginScreen, animated: true)
+    func pushToHomeScreen() {
+        if let homeScreen = UIStoryboard(name: HomeScreenVC.storyboard, bundle: nil)
+            .instantiateViewController(withIdentifier: HomeScreenVC.identifier) as? HomeScreenVC {
+            self.coordinator?.push(viewController: homeScreen, animated: true)
         }
     }
-}
+} 
