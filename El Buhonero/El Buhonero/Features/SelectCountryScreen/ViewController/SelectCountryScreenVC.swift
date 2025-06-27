@@ -13,15 +13,26 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo, Coordinating {
     
     static var storyboard = "SelectCountryScreen"
     static var identifier = "SelectCountryScreenVC"
+    
+    var viewModel: SelectCountryViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.fetchStores()
     }
     
     func setCoordinator(coordinator: Coordinator?) {
         self.coordinator = coordinator
     }
+    
+    func setViewModel(viewModel: SelectCountryViewModel) {
+        self.viewModel = viewModel
+    }
 
-
+    func fetchStores() {
+        Task {
+            await viewModel?.getStoreAProducts()
+            await viewModel?.getStoreBProducts()
+        }
+    }
 }
