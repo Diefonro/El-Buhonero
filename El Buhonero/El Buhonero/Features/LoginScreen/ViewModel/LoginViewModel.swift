@@ -17,6 +17,8 @@ class LoginViewModel {
     func login(username: String, password: String) {
         DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) { [weak self] in
             if self?.validateCredentials(username: username, password: password) == true {
+                // Save login state to DataManager
+                DataManager.shared.setLoginState(loggedIn: true, username: username, password: password)
                 self?.onLoginSuccess?()
             } else {
                 self?.onLoginError?("Invalid username or password. Please try again.")

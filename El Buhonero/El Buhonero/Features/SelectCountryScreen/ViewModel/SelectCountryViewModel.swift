@@ -18,7 +18,6 @@ class SelectCountryViewModel {
         case .success(let data):
             print("StoreA Success")
             DataManager.shared.storeAData = data
-            return
         case .failure(let error):
             print("StoreA fetch error")
             AppError.handle(error: error)

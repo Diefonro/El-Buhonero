@@ -1,5 +1,5 @@
 //
-//  LoginScreenCoordinator.swift
+//  ProductDetailScreenCoordinator.swift
 //  El Buhonero
 //
 //  Created by Andrés Fonseca on 27/06/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginScreenCoordinator: Coordinating {
+class ProductDetailScreenCoordinator: Coordinating {
     var coordinator: Coordinator?
     
     init(coordinator: Coordinator?) {
@@ -36,14 +36,5 @@ class LoginScreenCoordinator: Coordinating {
     
     func disableDragPopGesture() {
         self.coordinator?.disableDragPopGesture()
-    }
-    
-    func pushToHomeScreen() {
-        if let homeScreen = UIStoryboard(name: HomeScreenVC.storyboard, bundle: nil)
-            .instantiateViewController(withIdentifier: HomeScreenVC.identifier) as? HomeScreenVC {
-            homeScreen.setCoordinator(coordinator: HomeScreenCoordinator(coordinator: self.coordinator))
-            homeScreen.setViewModel(viewModel: HomeScreenViewModel())
-            self.coordinator?.push(viewController: homeScreen, animated: true)
-        }
     }
 } 

@@ -21,28 +21,10 @@ struct StoreBModelElement: Codable {
 // MARK: - Category
 struct BCategory: Codable {
     let id: Int
-    let name: Name
-    let slug: Slug
+    let name: String
+    let slug: String
     let image: String
     let creationAt, updatedAt: String
-}
-
-enum Name: String, Codable {
-    case clothes = "Clothes"
-    case electronics = "Electronics"
-    case furniture = "Furniture"
-    case many = "many"
-    case miscellaneous = "Miscellaneous"
-    case shoes = "Shoes"
-}
-
-enum Slug: String, Codable {
-    case clothes = "clothes"
-    case electronics = "electronics"
-    case furniture = "furniture"
-    case many = "many"
-    case miscellaneous = "miscellaneous"
-    case shoes = "shoes"
 }
 
 typealias StoreBModel = [StoreBModelElement]
