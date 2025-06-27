@@ -32,6 +32,12 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         displayCountryInfo()
+        hideNavigationBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        showNavigationBar()
     }
     
     func setCoordinator(coordinator: HomeScreenCoordinator?) {
@@ -185,5 +191,13 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
             self.displayCountryInfo()
             self.collectionView.reloadData()
         }
+    }
+    
+    private func hideNavigationBar() {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    private func showNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }

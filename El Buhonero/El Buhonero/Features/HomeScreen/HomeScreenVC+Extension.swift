@@ -77,11 +77,11 @@ extension HomeScreenVC: UICollectionViewDataSource, UICollectionViewDelegate {
             }
         } else if case .banner = viewModel.sectionType(indexPath.section) {
             if let product = viewModel.product(at: indexPath) {
-                print("Banner tapped: \(product.title)")
+                coordinator?.presentProductDetailScreen(product: product)
             }
         } else {
             if let product = viewModel.product(at: indexPath) {
-                print("Product tapped: \(product.title)")
+                coordinator?.presentProductDetailScreen(product: product)
             }
         }
     }

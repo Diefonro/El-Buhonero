@@ -47,4 +47,14 @@ class HomeScreenCoordinator: Coordinating {
         selectCountryVC.onCountryChanged = onCountryChanged
         self.coordinator?.push(viewController: selectCountryVC, animated: true)
     }
+    
+    func presentProductDetailScreen(product: HomeProduct) {
+        if let productDetailVC = UIStoryboard(name: ProductDetailScreenVC.storyboard, bundle: nil)
+            .instantiateViewController(withIdentifier: ProductDetailScreenVC.identifier) as? ProductDetailScreenVC {
+            productDetailVC.setCoordinator(coordinator: ProductDetailScreenCoordinator(coordinator: self.coordinator))
+            productDetailVC.setViewModel(viewModel: ProductDetailViewModel(product: product))
+            productDetailVC.coordinator?.showNavigationBar(animated: true)
+            self.coordinator?.push(viewController: productDetailVC, animated: true)
+        }
+    }
 }
