@@ -49,12 +49,22 @@ class HomeScreenCoordinator: Coordinating {
     }
     
     func presentProductDetailScreen(product: HomeProduct) {
-        if let productDetailVC = UIStoryboard(name: ProductDetailScreenVC.storyboard, bundle: nil)
+        if let detailScreen = UIStoryboard(name: ProductDetailScreenVC.storyboard, bundle: nil)
             .instantiateViewController(withIdentifier: ProductDetailScreenVC.identifier) as? ProductDetailScreenVC {
-            productDetailVC.setCoordinator(coordinator: ProductDetailScreenCoordinator(coordinator: self.coordinator))
-            productDetailVC.setViewModel(viewModel: ProductDetailViewModel(product: product))
-            productDetailVC.coordinator?.showNavigationBar(animated: true)
-            self.coordinator?.push(viewController: productDetailVC, animated: true)
+            detailScreen.setCoordinator(coordinator: ProductDetailScreenCoordinator(coordinator: self.coordinator))
+            detailScreen.setViewModel(viewModel: ProductDetailViewModel(product: product))
+            self.coordinator?.push(viewController: detailScreen, animated: true)
+        }
+    }
+
+    
+    func presentQRScanScreen() {
+        if let qrScanVC = UIStoryboard(name: QRScanScreenVC.storyboard, bundle: nil)
+            .instantiateViewController(withIdentifier: QRScanScreenVC.identifier) as? QRScanScreenVC {
+            qrScanVC.setCoordinator(coordinator: QRScanScreenCoordinator(coordinator: self.coordinator))
+            qrScanVC.setViewModel(viewModel: QRScanScreenViewModel())
+            self.coordinator?.showNavigationBar(animated: true)
+            self.coordinator?.push(viewController: qrScanVC, animated: true)
         }
     }
 }

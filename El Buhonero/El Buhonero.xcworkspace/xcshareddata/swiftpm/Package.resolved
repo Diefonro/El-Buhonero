@@ -1,5 +1,5 @@
 {
-  "originHash" : "a1569f9895aa2be8e24832f98525d5da4eb90b5d158a82691c15b47eb72a13d7",
+  "originHash" : "71870efd03cb7827f26f38efe40e68eeddf564080e68337e7b5e8e089222fc7c",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -116,6 +116,15 @@
       "state" : {
         "revision" : "540318ecedd63d883069ae7f1ed811a2df00b6ac",
         "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "qrcodereader.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yannickl/QRCodeReader.swift",
+      "state" : {
+        "revision" : "5020b5a47199d8ba80c83a4b4fafd70e9dc9dc7f",
+        "version" : "10.1.1"
       }
     },
     {

@@ -173,8 +173,8 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
         ])
     }
     
-    @objc private func qrButtonTapped() {
-        print("QR button tapped - show QR view (to be implemented)")
+    @IBAction func qrButtonTapped(_ sender: UIButton) {
+        coordinator?.presentQRScanScreen()
     }
     
     @objc private func logoutButtonTapped() {

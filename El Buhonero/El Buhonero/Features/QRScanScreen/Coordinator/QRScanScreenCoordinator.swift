@@ -1,5 +1,5 @@
 //
-//  ProductDetailScreenCoordinator.swift
+//  QRScanScreenCoordinator.swift
 //  El Buhonero
 //
 //  Created by Andrés Fonseca on 27/06/25.
@@ -7,19 +7,11 @@
 
 import UIKit
 
-class ProductDetailScreenCoordinator: Coordinating {
+class QRScanScreenCoordinator: Coordinating {
     var coordinator: Coordinator?
     
     init(coordinator: Coordinator?) {
         self.coordinator = coordinator
-    }
-    
-    func start(with product: HomeProduct) {
-
-    }
-    
-    func start(with productId: Int, country: String) {
-
     }
     
     func showNavigationBar(animated: Bool = false) {
@@ -45,4 +37,14 @@ class ProductDetailScreenCoordinator: Coordinating {
     func disableDragPopGesture() {
         self.coordinator?.disableDragPopGesture()
     }
-} 
+    
+    func presentProductDetailFromQR(qrData: QRCodeData) {
+        if let detailScreen = UIStoryboard(name: ProductDetailScreenVC.storyboard, bundle: nil)
+            .instantiateViewController(withIdentifier: ProductDetailScreenVC.identifier) as? ProductDetailScreenVC {
+            detailScreen.setCoordinator(coordinator: ProductDetailScreenCoordinator(coordinator: self.coordinator))
+            let viewModel = ProductDetailViewModel(productId: qrData.productId, country: qrData.country)
+                detailScreen.setViewModel(viewModel: viewModel)
+            self.coordinator?.push(viewController: detailScreen, animated: true)
+        }
+    }
+}

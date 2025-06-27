@@ -92,6 +92,14 @@
                                     <constraint firstItem="contentView" firstAttribute="trailing" secondItem="scrollView" secondAttribute="trailing" id="contentTrailing"/>
                                 </constraints>
                             </scrollView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="NO" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="loadingIndicator">
+                                <rect key="frame" x="176.66666666666666" y="406" width="40" height="40"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="loadingWidth"/>
+                                    <constraint firstAttribute="height" constant="40" id="loadingHeight"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.050000000000000003" green="0.050000000000000003" blue="0.050000000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -100,6 +108,8 @@
                             <constraint firstItem="scrollView" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="scrollLeading"/>
                             <constraint firstItem="scrollView" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="scrollTop"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="scrollView" secondAttribute="trailing" id="scrollTrailing"/>
+                            <constraint firstItem="loadingIndicator" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="loadingCenterX"/>
+                            <constraint firstItem="loadingIndicator" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="loadingCenterY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Product Detail" id="navigationItem"/>
@@ -108,6 +118,7 @@
                         <outlet property="contentView" destination="contentView" id="contentOutlet"/>
                         <outlet property="descriptionLabel" destination="descriptionLabel" id="descriptionOutlet"/>
                         <outlet property="idLabel" destination="idLabel" id="idOutlet"/>
+                        <outlet property="loadingIndicator" destination="loadingIndicator" id="loadingOutlet"/>
                         <outlet property="priceLabel" destination="priceLabel" id="priceOutlet"/>
                         <outlet property="productImageView" destination="productImageView" id="imageOutlet"/>
                         <outlet property="scrollView" destination="scrollView" id="scrollOutlet"/>

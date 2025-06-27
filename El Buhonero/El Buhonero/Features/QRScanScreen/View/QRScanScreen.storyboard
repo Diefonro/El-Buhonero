@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scan QR Code-->
+        <scene sceneID="qr-scan-scene">
+            <objects>
+                <viewController storyboardIdentifier="QRScanScreenVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qr-scan-vc" customClass="QRScanScreenVC" customModule="El_Buhonero" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qr-scan-view">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cameraView">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scanFrameView">
+                                <rect key="frame" x="71.666666666666686" y="326" width="250" height="250"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="frameHeight"/>
+                                    <constraint firstAttribute="width" constant="250" id="frameWidth"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position QR code within the frame" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="instructionLabel">
+                                <rect key="frame" x="20" y="596" width="353" height="19.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scanButton">
+                                <rect key="frame" x="96.666666666666686" y="635.33333333333337" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="buttonHeight"/>
+                                    <constraint firstAttribute="width" constant="200" id="buttonWidth"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Scan QR Code">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <color key="backgroundColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="activityIndicator">
+                                <rect key="frame" x="176.66666666666666" y="431" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="indicatorHeight"/>
+                                    <constraint firstAttribute="width" constant="40" id="indicatorWidth"/>
+                                </constraints>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qr-scan-safe"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cameraView" firstAttribute="bottom" secondItem="qr-scan-safe" secondAttribute="bottom" id="cameraBottom"/>
+                            <constraint firstItem="cameraView" firstAttribute="leading" secondItem="qr-scan-safe" secondAttribute="leading" id="cameraLeading"/>
+                            <constraint firstItem="cameraView" firstAttribute="top" secondItem="qr-scan-safe" secondAttribute="top" id="cameraTop"/>
+                            <constraint firstItem="cameraView" firstAttribute="trailing" secondItem="qr-scan-safe" secondAttribute="trailing" id="cameraTrailing"/>
+                            <constraint firstItem="scanFrameView" firstAttribute="centerX" secondItem="qr-scan-safe" secondAttribute="centerX" id="frameCenterX"/>
+                            <constraint firstItem="scanFrameView" firstAttribute="centerY" secondItem="qr-scan-safe" secondAttribute="centerY" id="frameCenterY"/>
+                            <constraint firstItem="activityIndicator" firstAttribute="centerX" secondItem="qr-scan-safe" secondAttribute="centerX" id="indicatorCenterX"/>
+                            <constraint firstItem="activityIndicator" firstAttribute="centerY" secondItem="qr-scan-safe" secondAttribute="centerY" id="indicatorCenterY"/>
+                            <constraint firstItem="instructionLabel" firstAttribute="leading" secondItem="qr-scan-safe" secondAttribute="leading" constant="20" id="instructionLeading"/>
+                            <constraint firstItem="instructionLabel" firstAttribute="top" secondItem="scanFrameView" secondAttribute="bottom" constant="20" id="instructionTop"/>
+                            <constraint firstItem="instructionLabel" firstAttribute="trailing" secondItem="qr-scan-safe" secondAttribute="trailing" constant="-20" id="instructionTrailing"/>
+                            <constraint firstItem="scanButton" firstAttribute="centerX" secondItem="qr-scan-safe" secondAttribute="centerX" id="buttonCenterX"/>
+                            <constraint firstItem="scanButton" firstAttribute="top" secondItem="instructionLabel" secondAttribute="bottom" constant="20" id="buttonTop"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scan QR Code" id="qr-navigation-item"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="activityIndicator" id="activityOutlet"/>
+                        <outlet property="instructionLabel" destination="instructionLabel" id="instructionOutlet"/>
+                        <outlet property="scanButton" destination="scanButton" id="scanButtonOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qr-first-responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31" y="-27"/>
+        </scene>
+    </scenes>
+</document>

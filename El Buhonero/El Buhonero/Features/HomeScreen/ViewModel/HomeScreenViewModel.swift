@@ -14,6 +14,10 @@ struct HomeProduct {
     let imageUrl: String
     let category: String?
     let description: String?
+    
+    var formattedPrice: String {
+        return String(format: "$%.2f", price)
+    }
 }
 
 enum HomeSection {

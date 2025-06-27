@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		277B49E365F2D8291BDA7684 /* Pods_El_Buhonero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4A74C7ACE7B0AD6D1143AB /* Pods_El_Buhonero.framework */; };
+		2E10D64F2E0F5C9700238C26 /* QRCodeReader in Frameworks */ = {isa = PBXBuildFile; productRef = 2E10D64E2E0F5C9700238C26 /* QRCodeReader */; };
 		2EC540192E0DD54F007E7E12 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2EC540182E0DD54F007E7E12 /* FirebaseAnalytics */; };
 		2EC5401B2E0DD54F007E7E12 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2EC5401A2E0DD54F007E7E12 /* FirebaseAuth */; };
-		528E7249E7531CF1E6951A1C /* Pods_El_Buhonero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92A05C681219D37F56FBE20 /* Pods_El_Buhonero.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C6989058D52253B86A5634E /* Pods-El Buhonero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-El Buhonero.release.xcconfig"; path = "Target Support Files/Pods-El Buhonero/Pods-El Buhonero.release.xcconfig"; sourceTree = "<group>"; };
 		2EC53FF62E0DD4A8007E7E12 /* El Buhonero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "El Buhonero.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A92A05C681219D37F56FBE20 /* Pods_El_Buhonero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_El_Buhonero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FDF55150889165335E14B688 /* Pods-El Buhonero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-El Buhonero.debug.xcconfig"; path = "Target Support Files/Pods-El Buhonero/Pods-El Buhonero.debug.xcconfig"; sourceTree = "<group>"; };
+		5CF0E618E6DB5943CFE9EDD6 /* Pods-El Buhonero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-El Buhonero.release.xcconfig"; path = "Target Support Files/Pods-El Buhonero/Pods-El Buhonero.release.xcconfig"; sourceTree = "<group>"; };
+		BD4A74C7ACE7B0AD6D1143AB /* Pods_El_Buhonero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_El_Buhonero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE279776CA5F06E431D03E14 /* Pods-El Buhonero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-El Buhonero.debug.xcconfig"; path = "Target Support Files/Pods-El Buhonero/Pods-El Buhonero.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -46,8 +47,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EC540192E0DD54F007E7E12 /* FirebaseAnalytics in Frameworks */,
+				2E10D64F2E0F5C9700238C26 /* QRCodeReader in Frameworks */,
 				2EC5401B2E0DD54F007E7E12 /* FirebaseAuth in Frameworks */,
-				528E7249E7531CF1E6951A1C /* Pods_El_Buhonero.framework in Frameworks */,
+				277B49E365F2D8291BDA7684 /* Pods_El_Buhonero.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +62,7 @@
 				2EC53FF82E0DD4A8007E7E12 /* El Buhonero */,
 				2EC53FF72E0DD4A8007E7E12 /* Products */,
 				98D993B8F7DC096DF7C0C696 /* Pods */,
-				D27C8CE5C2B9254290B71F25 /* Frameworks */,
+				F4975F46E57DC85BCB702D65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,16 +77,16 @@
 		98D993B8F7DC096DF7C0C696 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FDF55150889165335E14B688 /* Pods-El Buhonero.debug.xcconfig */,
-				1C6989058D52253B86A5634E /* Pods-El Buhonero.release.xcconfig */,
+				CE279776CA5F06E431D03E14 /* Pods-El Buhonero.debug.xcconfig */,
+				5CF0E618E6DB5943CFE9EDD6 /* Pods-El Buhonero.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		D27C8CE5C2B9254290B71F25 /* Frameworks */ = {
+		F4975F46E57DC85BCB702D65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A92A05C681219D37F56FBE20 /* Pods_El_Buhonero.framework */,
+				BD4A74C7ACE7B0AD6D1143AB /* Pods_El_Buhonero.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -96,11 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EC540092E0DD4AA007E7E12 /* Build configuration list for PBXNativeTarget "El Buhonero" */;
 			buildPhases = (
-				73037D3F47472F23BA942DD9 /* [CP] Check Pods Manifest.lock */,
+				7F68694BB5E299D26321743D /* [CP] Check Pods Manifest.lock */,
 				2EC53FF22E0DD4A8007E7E12 /* Sources */,
 				2EC53FF32E0DD4A8007E7E12 /* Frameworks */,
 				2EC53FF42E0DD4A8007E7E12 /* Resources */,
-				FC5833323008D9CA2A11A196 /* [CP] Embed Pods Frameworks */,
+				7EEBE668F276A1BEA7905D39 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -113,6 +115,7 @@
 			packageProductDependencies = (
 				2EC540182E0DD54F007E7E12 /* FirebaseAnalytics */,
 				2EC5401A2E0DD54F007E7E12 /* FirebaseAuth */,
+				2E10D64E2E0F5C9700238C26 /* QRCodeReader */,
 			);
 			productName = "El Buhonero";
 			productReference = 2EC53FF62E0DD4A8007E7E12 /* El Buhonero.app */;
@@ -144,6 +147,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				2EC540172E0DD54F007E7E12 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2E10D64D2E0F5C9700238C26 /* XCRemoteSwiftPackageReference "QRCodeReader.swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2EC53FF72E0DD4A8007E7E12 /* Products */;
@@ -166,7 +170,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		73037D3F47472F23BA942DD9 /* [CP] Check Pods Manifest.lock */ = {
+		7EEBE668F276A1BEA7905D39 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-El Buhonero/Pods-El Buhonero-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-El Buhonero/Pods-El Buhonero-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-El Buhonero/Pods-El Buhonero-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F68694BB5E299D26321743D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -188,27 +209,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FC5833323008D9CA2A11A196 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-El Buhonero/Pods-El Buhonero-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-El Buhonero/Pods-El Buhonero-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-El Buhonero/Pods-El Buhonero-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -224,7 +224,7 @@
 /* Begin XCBuildConfiguration section */
 		2EC5400A2E0DD4AA007E7E12 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDF55150889165335E14B688 /* Pods-El Buhonero.debug.xcconfig */;
+			baseConfigurationReference = CE279776CA5F06E431D03E14 /* Pods-El Buhonero.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -260,7 +260,7 @@
 		};
 		2EC5400B2E0DD4AA007E7E12 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C6989058D52253B86A5634E /* Pods-El Buhonero.release.xcconfig */;
+			baseConfigurationReference = 5CF0E618E6DB5943CFE9EDD6 /* Pods-El Buhonero.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -439,6 +439,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2E10D64D2E0F5C9700238C26 /* XCRemoteSwiftPackageReference "QRCodeReader.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/QRCodeReader.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.1.1;
+			};
+		};
 		2EC540172E0DD54F007E7E12 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -450,6 +458,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2E10D64E2E0F5C9700238C26 /* QRCodeReader */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E10D64D2E0F5C9700238C26 /* XCRemoteSwiftPackageReference "QRCodeReader.swift" */;
+			productName = QRCodeReader;
+		};
 		2EC540182E0DD54F007E7E12 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2EC540172E0DD54F007E7E12 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
