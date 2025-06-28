@@ -9,7 +9,7 @@ import Foundation
 
 protocol PaymentScreenViewModelDelegate: AnyObject {
     func paymentProcessing(_ isProcessing: Bool)
-    func paymentSuccess()
+    func paymentSuccess(orderNumber: String)
     func paymentFailed(_ error: PaymentError)
 }
 
@@ -52,12 +52,38 @@ class PaymentScreenViewModel {
                 
                 switch result {
                 case .success:
-                    self?.delegate?.paymentSuccess()
+                    self?.saveOrder(card: card)
                 case .failure(let error):
                     self?.delegate?.paymentFailed(error)
                 }
             }
         }
+    }
+    
+    private func saveOrder(card: PaymentCard) {
+        let orderNumber = OrderManager.shared.generateOrderNumber()
+        let lastFourDigits = OrderManager.shared.getLastFourDigits(from: card.number)
+        
+        let order = Order(
+            orderNumber: orderNumber,
+            productTitle: productTitle,
+            productPrice: totalAmount,
+            productImageURL: product.imageUrl,
+            cardLastFourDigits: lastFourDigits,
+            transactionDate: Date(),
+            status: .completed
+        )
+        
+        OrderManager.shared.saveOrder(order)
+        
+        print("💾 Order saved: \(orderNumber)")
+        print("   Product: \(productTitle)")
+        print("   Amount: $\(totalAmount)")
+        print("   Image: \(product.imageUrl)")
+        print("   Card: ****\(lastFourDigits)")
+        print("   Date: \(order.transactionDate)")
+        
+        delegate?.paymentSuccess(orderNumber: orderNumber)
     }
     
     func getValidTestCard() -> PaymentCard {

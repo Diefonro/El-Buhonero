@@ -38,19 +38,40 @@ class PaymentScreenCoordinator: Coordinating {
         self.coordinator?.disableDragPopGesture()
     }
     
-    func showPaymentSuccess() {
+    func showPaymentSuccess(orderNumber: String) {
         let alert = UIAlertController(
             title: "Payment Successful!",
-            message: "Your order has been processed successfully. You will be redirected to the home screen.",
+            message: "Your order has been processed successfully.\n\nOrder Number: \(orderNumber)\n\nYou will be redirected to the home screen.",
             preferredStyle: .alert
         )
         
         alert.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            self?.coordinator?.popToRootController(animated: true)
+            self?.navigateToHomeScreen()
         })
         
         if let topViewController = coordinator?.navigationController?.topViewController {
             topViewController.present(alert, animated: true)
+        }
+    }
+    
+    private func navigateToHomeScreen() {
+        // Pop back to HomeScreen if it exists in the navigation stack
+        if let navigationController = coordinator?.navigationController {
+            // Find HomeScreen in the navigation stack
+            for viewController in navigationController.viewControllers {
+                if viewController is HomeScreenVC {
+                    navigationController.popToViewController(viewController, animated: true)
+                    return
+                }
+            }
+            
+            // If HomeScreen is not in the stack, create a new one
+            if let homeScreen = UIStoryboard(name: HomeScreenVC.storyboard, bundle: nil)
+                .instantiateViewController(withIdentifier: HomeScreenVC.identifier) as? HomeScreenVC {
+                homeScreen.setCoordinator(coordinator: HomeScreenCoordinator(coordinator: self.coordinator))
+                homeScreen.setViewModel(viewModel: HomeScreenViewModel())
+                navigationController.setViewControllers([homeScreen], animated: true)
+            }
         }
     }
     

@@ -10,16 +10,12 @@ import UIKit
 class PaymentScreenVC: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var productTitleLabel: UILabel!
-    @IBOutlet weak var productPriceLabel: UILabel!
-    @IBOutlet weak var cardNumberTextField: UITextField!
-    @IBOutlet weak var cvvTextField: UITextField!
-    @IBOutlet weak var expirationMonthTextField: UITextField!
-    @IBOutlet weak var expirationYearTextField: UITextField!
+    @IBOutlet weak var cardNumberField: UITextField!
+    @IBOutlet weak var cardholderField: UITextField!
+    @IBOutlet weak var cvvField: UITextField!
+    @IBOutlet weak var expiryField: UITextField!
+    @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var testCardInfoLabel: UILabel!
     
     // MARK: - Properties
     var coordinator: PaymentScreenCoordinator?
@@ -30,7 +26,6 @@ class PaymentScreenVC: UIViewController {
         setupUI()
         setupViewModel()
         setupTextFields()
-        showTestCardInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,12 +36,12 @@ class PaymentScreenVC: UIViewController {
     // MARK: - Setup Methods
     private func setupUI() {
         title = "Payment"
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor(red: 0.047, green: 0.047, blue: 0.047, alpha: 1.0)
         
-        // Setup product info
-        productTitleLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        productPriceLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        productPriceLabel.textColor = .systemBlue
+        // Setup total label
+        totalLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        totalLabel.textColor = .white
+        totalLabel.text = "Total: $0.00"
         
         // Setup pay button
         payButton.setTitle("Pay Now", for: .normal)
@@ -54,48 +49,48 @@ class PaymentScreenVC: UIViewController {
         payButton.setTitleColor(.white, for: .normal)
         payButton.layer.cornerRadius = 8
         payButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        
-        // Setup activity indicator
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        
-        // Setup test card info
-        testCardInfoLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        testCardInfoLabel.textColor = .secondaryLabel
-        testCardInfoLabel.numberOfLines = 0
     }
     
     private func setupViewModel() {
         viewModel?.delegate = self
         
         // Update UI with product info
-        productTitleLabel.text = viewModel?.productTitle
-        productPriceLabel.text = viewModel?.productPrice
+        if let price = viewModel?.productPrice {
+            totalLabel.text = "Total: \(price)"
+        }
     }
     
     private func setupTextFields() {
         // Setup text field delegates
-        cardNumberTextField.delegate = self
-        cvvTextField.delegate = self
-        expirationMonthTextField.delegate = self
-        expirationYearTextField.delegate = self
+        cardNumberField.delegate = self
+        cardholderField.delegate = self
+        cvvField.delegate = self
+        expiryField.delegate = self
+        
+        // Setup text field appearance
+        let textFields = [cardNumberField, cardholderField, cvvField, expiryField]
+        for textField in textFields {
+            textField?.textColor = .black
+            textField?.backgroundColor = .white
+            textField?.layer.cornerRadius = 8
+            textField?.layer.borderWidth = 1
+            textField?.layer.borderColor = UIColor.systemGray4.cgColor
+        }
         
         // Setup placeholders
-        cardNumberTextField.placeholder = "Card Number"
-        cvvTextField.placeholder = "CVV"
-        expirationMonthTextField.placeholder = "MM"
-        expirationYearTextField.placeholder = "YY"
+        cardNumberField.placeholder = "Card Number"
+        cardholderField.placeholder = "Cardholder Name"
+        cvvField.placeholder = "CVV"
+        expiryField.placeholder = "MM/YY"
         
         // Setup keyboard types
-        cardNumberTextField.keyboardType = .numberPad
-        cvvTextField.keyboardType = .numberPad
-        expirationMonthTextField.keyboardType = .numberPad
-        expirationYearTextField.keyboardType = .numberPad
+        cardNumberField.keyboardType = .numberPad
+        cvvField.keyboardType = .numberPad
+        expiryField.keyboardType = .numberPad
         
         // Setup input masks
-        cardNumberTextField.addTarget(self, action: #selector(cardNumberChanged), for: .editingChanged)
-        expirationMonthTextField.addTarget(self, action: #selector(expirationMonthChanged), for: .editingChanged)
-        expirationYearTextField.addTarget(self, action: #selector(expirationYearChanged), for: .editingChanged)
+        cardNumberField.addTarget(self, action: #selector(cardNumberChanged), for: .editingChanged)
+        expiryField.addTarget(self, action: #selector(expiryChanged), for: .editingChanged)
     }
     
     private func setupNavigationBar() {
@@ -104,29 +99,24 @@ class PaymentScreenVC: UIViewController {
         navigationController?.navigationBar.barStyle = .black
     }
     
-    private func showTestCardInfo() {
-        let testCard = viewModel?.getValidTestCard()
-        testCardInfoLabel.text = "Test Card: \(testCard?.number ?? "") | CVV: \(testCard?.cvv ?? "") | Exp: \(testCard?.expirationMonth ?? "")/\(testCard?.expirationYear ?? "")"
-    }
-    
     private func validateForm() -> Bool {
-        guard let cardNumber = cardNumberTextField.text, !cardNumber.isEmpty else {
+        guard let cardNumber = cardNumberField.text, !cardNumber.isEmpty else {
             showAlert(title: "Error", message: "Please enter card number")
             return false
         }
         
-        guard let cvv = cvvTextField.text, !cvv.isEmpty else {
+        guard let cardholder = cardholderField.text, !cardholder.isEmpty else {
+            showAlert(title: "Error", message: "Please enter cardholder name")
+            return false
+        }
+        
+        guard let cvv = cvvField.text, !cvv.isEmpty else {
             showAlert(title: "Error", message: "Please enter CVV")
             return false
         }
         
-        guard let month = expirationMonthTextField.text, !month.isEmpty else {
-            showAlert(title: "Error", message: "Please enter expiration month")
-            return false
-        }
-        
-        guard let year = expirationYearTextField.text, !year.isEmpty else {
-            showAlert(title: "Error", message: "Please enter expiration year")
+        guard let expiry = expiryField.text, !expiry.isEmpty else {
+            showAlert(title: "Error", message: "Please enter expiration date")
             return false
         }
         
@@ -143,34 +133,55 @@ class PaymentScreenVC: UIViewController {
     @IBAction func payButtonTapped(_ sender: UIButton) {
         guard validateForm() else { return }
         
+        // Extract month and year from expiry field
+        let expiryText = expiryField.text ?? ""
+        let components = expiryText.split(separator: "/")
+        let month = components.count > 0 ? String(components[0]) : ""
+        let year = components.count > 1 ? String(components[1]) : ""
+        
+        // Clean card number by removing spaces
+        let cleanCardNumber = (cardNumberField.text ?? "").replacingOccurrences(of: " ", with: "")
+        
         let card = PaymentCard(
-            number: cardNumberTextField.text ?? "",
-            cvv: cvvTextField.text ?? "",
-            expirationMonth: expirationMonthTextField.text ?? "",
-            expirationYear: expirationYearTextField.text ?? ""
+            number: cleanCardNumber,
+            cvv: cvvField.text ?? "",
+            expirationMonth: month,
+            expirationYear: year
         )
+        
+        // Debug: Print card details
+        print("🔍 Processing Payment:")
+        print("   Card Number: '\(cleanCardNumber)'")
+        print("   CVV: '\(card.cvv)'")
+        print("   Month: '\(card.expirationMonth)'")
+        print("   Year: '\(card.expirationYear)'")
+        print("   Expected: '4111111111111111', '123', '12', '25'")
         
         viewModel?.processPayment(card: card)
     }
     
     @objc private func cardNumberChanged() {
-        guard let text = cardNumberTextField.text else { return }
+        guard let text = cardNumberField.text else { return }
         let cleaned = text.replacingOccurrences(of: " ", with: "")
         let formatted = formatCardNumber(cleaned)
-        cardNumberTextField.text = formatted
+        cardNumberField.text = formatted
     }
     
-    @objc private func expirationMonthChanged() {
-        guard let text = expirationMonthTextField.text else { return }
-        if text.count > 2 {
-            expirationMonthTextField.text = String(text.prefix(2))
+    @objc private func expiryChanged() {
+        guard let text = expiryField.text else { return }
+        let cleaned = text.replacingOccurrences(of: "/", with: "")
+        
+        if cleaned.count >= 2 {
+            let month = String(cleaned.prefix(2))
+            let year = cleaned.count > 2 ? String(cleaned.suffix(cleaned.count - 2)) : ""
+            expiryField.text = "\(month)/\(year)"
+        } else {
+            expiryField.text = cleaned
         }
-    }
-    
-    @objc private func expirationYearChanged() {
-        guard let text = expirationYearTextField.text else { return }
-        if text.count > 2 {
-            expirationYearTextField.text = String(text.prefix(2))
+        
+        // Limit to MM/YY format
+        if cleaned.count > 4 {
+            expiryField.text = String(cleaned.prefix(4))
         }
     }
     
@@ -196,14 +207,12 @@ extension PaymentScreenVC: UITextFieldDelegate {
         let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
         
         switch textField {
-        case cardNumberTextField:
+        case cardNumberField:
             return newText.replacingOccurrences(of: " ", with: "").count <= 16
-        case cvvTextField:
+        case cvvField:
             return newText.count <= 4
-        case expirationMonthTextField:
-            return newText.count <= 2
-        case expirationYearTextField:
-            return newText.count <= 2
+        case expiryField:
+            return newText.replacingOccurrences(of: "/", with: "").count <= 4
         default:
             return true
         }
@@ -211,13 +220,13 @@ extension PaymentScreenVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case cardNumberTextField:
-            cvvTextField.becomeFirstResponder()
-        case cvvTextField:
-            expirationMonthTextField.becomeFirstResponder()
-        case expirationMonthTextField:
-            expirationYearTextField.becomeFirstResponder()
-        case expirationYearTextField:
+        case cardNumberField:
+            cardholderField.becomeFirstResponder()
+        case cardholderField:
+            cvvField.becomeFirstResponder()
+        case cvvField:
+            expiryField.becomeFirstResponder()
+        case expiryField:
             textField.resignFirstResponder()
             payButtonTapped(payButton)
         default:
@@ -231,18 +240,16 @@ extension PaymentScreenVC: UITextFieldDelegate {
 extension PaymentScreenVC: PaymentScreenViewModelDelegate {
     func paymentProcessing(_ isProcessing: Bool) {
         if isProcessing {
-            activityIndicator.startAnimating()
             payButton.isEnabled = false
             payButton.setTitle("Processing...", for: .disabled)
         } else {
-            activityIndicator.stopAnimating()
             payButton.isEnabled = true
             payButton.setTitle("Pay Now", for: .normal)
         }
     }
     
-    func paymentSuccess() {
-        coordinator?.showPaymentSuccess()
+    func paymentSuccess(orderNumber: String) {
+        coordinator?.showPaymentSuccess(orderNumber: orderNumber)
     }
     
     func paymentFailed(_ error: PaymentError) {

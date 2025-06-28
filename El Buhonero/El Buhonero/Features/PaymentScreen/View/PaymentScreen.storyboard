@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Payment ScreenVC-->
+        <scene sceneID="payment-scene">
+            <objects>
+                <viewController storyboardIdentifier="PaymentScreenVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="payment-vc" customClass="PaymentScreenVC" customModule="El_Buhonero" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="payment-view">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scroll-view">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="content-view">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="title-label">
+                                                <rect key="frame" x="20" y="20" width="353" height="36"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="card-number-field">
+                                                <rect key="frame" x="20" y="80" width="353" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Number" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="card-number-label">
+                                                <rect key="frame" x="20" y="125" width="353" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cardholder Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cardholder-field">
+                                                <rect key="frame" x="20" y="165" width="353" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cardholder Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cardholder-label">
+                                                <rect key="frame" x="20" y="210" width="353" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/YY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="expiry-field">
+                                                <rect key="frame" x="20" y="250" width="170" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry Date (MM/YY)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="expiry-label">
+                                                <rect key="frame" x="20" y="295" width="170" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVV" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cvv-field">
+                                                <rect key="frame" x="203" y="250" width="170" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CVV" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvv-label">
+                                                <rect key="frame" x="203" y="295" width="170" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: $0.00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="total-label">
+                                                <rect key="frame" x="20" y="335" width="353" height="36"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pay-button">
+                                                <rect key="frame" x="20" y="395" width="353" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="button-height"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Pay Now">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="filled" cornerStyle="medium"/>
+                                                <connections>
+                                                    <action selector="payButtonTapped:" destination="payment-vc" eventType="touchUpInside" id="pay-action"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="title-label" firstAttribute="top" secondItem="content-view" secondAttribute="top" constant="20" id="title-top"/>
+                                            <constraint firstItem="title-label" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="title-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="title-label" secondAttribute="trailing" constant="20" id="title-trailing"/>
+                                            
+                                            <constraint firstItem="card-number-field" firstAttribute="top" secondItem="title-label" secondAttribute="bottom" constant="24" id="card-number-top"/>
+                                            <constraint firstItem="card-number-field" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="card-number-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="card-number-field" secondAttribute="trailing" constant="20" id="card-number-trailing"/>
+                                            
+                                            <constraint firstItem="card-number-label" firstAttribute="top" secondItem="card-number-field" secondAttribute="bottom" constant="5" id="card-number-label-top"/>
+                                            <constraint firstItem="card-number-label" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="card-number-label-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="card-number-label" secondAttribute="trailing" constant="20" id="card-number-label-trailing"/>
+                                            
+                                            <constraint firstItem="cardholder-field" firstAttribute="top" secondItem="card-number-label" secondAttribute="bottom" constant="20" id="cardholder-top"/>
+                                            <constraint firstItem="cardholder-field" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="cardholder-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="cardholder-field" secondAttribute="trailing" constant="20" id="cardholder-trailing"/>
+                                            
+                                            <constraint firstItem="cardholder-label" firstAttribute="top" secondItem="cardholder-field" secondAttribute="bottom" constant="5" id="cardholder-label-top"/>
+                                            <constraint firstItem="cardholder-label" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="cardholder-label-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="cardholder-label" secondAttribute="trailing" constant="20" id="cardholder-label-trailing"/>
+                                            
+                                            <constraint firstItem="expiry-field" firstAttribute="top" secondItem="cardholder-label" secondAttribute="bottom" constant="20" id="expiry-top"/>
+                                            <constraint firstItem="expiry-field" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="expiry-leading"/>
+                                            <constraint firstItem="expiry-field" firstAttribute="width" secondItem="cardholder-field" secondAttribute="width" multiplier="0.48" id="expiry-width"/>
+                                            
+                                            <constraint firstItem="expiry-label" firstAttribute="top" secondItem="expiry-field" secondAttribute="bottom" constant="5" id="expiry-label-top"/>
+                                            <constraint firstItem="expiry-label" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="expiry-label-leading"/>
+                                            <constraint firstItem="expiry-label" firstAttribute="width" secondItem="expiry-field" secondAttribute="width" id="expiry-label-width"/>
+                                            
+                                            <constraint firstItem="cvv-field" firstAttribute="top" secondItem="cardholder-label" secondAttribute="bottom" constant="20" id="cvv-top"/>
+                                            <constraint firstItem="cvv-field" firstAttribute="leading" secondItem="expiry-field" secondAttribute="trailing" constant="13" id="cvv-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="cvv-field" secondAttribute="trailing" constant="20" id="cvv-trailing"/>
+                                            <constraint firstItem="cvv-field" firstAttribute="width" secondItem="expiry-field" secondAttribute="width" id="cvv-width"/>
+                                            
+                                            <constraint firstItem="cvv-label" firstAttribute="top" secondItem="cvv-field" secondAttribute="bottom" constant="5" id="cvv-label-top"/>
+                                            <constraint firstItem="cvv-label" firstAttribute="leading" secondItem="cvv-field" secondAttribute="leading" id="cvv-label-leading"/>
+                                            <constraint firstItem="cvv-label" firstAttribute="width" secondItem="cvv-field" secondAttribute="width" id="cvv-label-width"/>
+                                            
+                                            <constraint firstItem="total-label" firstAttribute="top" secondItem="expiry-label" secondAttribute="bottom" constant="20" id="total-top"/>
+                                            <constraint firstItem="total-label" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="total-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="total-label" secondAttribute="trailing" constant="20" id="total-trailing"/>
+                                            
+                                            <constraint firstItem="pay-button" firstAttribute="top" secondItem="total-label" secondAttribute="bottom" constant="24" id="pay-top"/>
+                                            <constraint firstItem="pay-button" firstAttribute="leading" secondItem="content-view" secondAttribute="leading" constant="20" id="pay-leading"/>
+                                            <constraint firstAttribute="trailing" secondItem="pay-button" secondAttribute="trailing" constant="20" id="pay-trailing"/>
+                                            
+                                            <constraint firstAttribute="bottom" secondItem="pay-button" secondAttribute="bottom" constant="20" id="content-bottom"/>
+                                            <constraint firstItem="content-view" firstAttribute="width" secondItem="scroll-view" secondAttribute="width" id="content-width"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="content-view" firstAttribute="leading" secondItem="scroll-view" secondAttribute="leading" id="scroll-content-leading"/>
+                                    <constraint firstAttribute="trailing" secondItem="content-view" secondAttribute="trailing" id="scroll-content-trailing"/>
+                                    <constraint firstItem="content-view" firstAttribute="top" secondItem="scroll-view" secondAttribute="top" id="scroll-content-top"/>
+                                    <constraint firstAttribute="bottom" secondItem="content-view" secondAttribute="bottom" id="scroll-content-bottom"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="safe-area"/>
+                        <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="safe-area" firstAttribute="trailing" secondItem="scroll-view" secondAttribute="trailing" id="scroll-trailing"/>
+                            <constraint firstItem="scroll-view" firstAttribute="leading" secondItem="safe-area" secondAttribute="leading" id="scroll-leading"/>
+                            <constraint firstItem="scroll-view" firstAttribute="top" secondItem="safe-area" secondAttribute="top" id="scroll-top"/>
+                            <constraint firstItem="safe-area" firstAttribute="bottom" secondItem="scroll-view" secondAttribute="bottom" id="scroll-bottom"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cardNumberField" destination="card-number-field" id="card-number-outlet"/>
+                        <outlet property="cardholderField" destination="cardholder-field" id="cardholder-outlet"/>
+                        <outlet property="cvvField" destination="cvv-field" id="cvv-outlet"/>
+                        <outlet property="expiryField" destination="expiry-field" id="expiry-outlet"/>
+                        <outlet property="payButton" destination="pay-button" id="pay-outlet"/>
+                        <outlet property="totalLabel" destination="total-label" id="total-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="first-responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="29.770992366412212" y="-28.169014084507044"/>
+        </scene>
+    </scenes>
+</document>

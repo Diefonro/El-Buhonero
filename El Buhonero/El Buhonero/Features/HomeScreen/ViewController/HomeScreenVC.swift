@@ -153,6 +153,14 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
         qrButton.addTarget(self, action: #selector(qrButtonTapped), for: .touchUpInside)
         navBar.addSubview(qrButton)
         
+        // Purchase History Button
+        let historyButton = UIButton(type: .system)
+        historyButton.translatesAutoresizingMaskIntoConstraints = false
+        historyButton.setImage(UIImage(systemName: "clock.arrow.circlepath"), for: .normal)
+        historyButton.tintColor = .white
+        historyButton.addTarget(self, action: #selector(historyButtonTapped), for: .touchUpInside)
+        navBar.addSubview(historyButton)
+        
         // Logout Button
         let logoutButton = UIButton(type: .system)
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
@@ -162,10 +170,16 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
         navBar.addSubview(logoutButton)
         
         NSLayoutConstraint.activate([
-            qrButton.centerXAnchor.constraint(equalTo: navBar.centerXAnchor),
+            qrButton.leadingAnchor.constraint(equalTo: navBar.leadingAnchor, constant: 16),
             qrButton.centerYAnchor.constraint(equalTo: navBar.centerYAnchor),
             qrButton.widthAnchor.constraint(equalToConstant: 32),
             qrButton.heightAnchor.constraint(equalToConstant: 32),
+            
+            historyButton.centerXAnchor.constraint(equalTo: navBar.centerXAnchor),
+            historyButton.centerYAnchor.constraint(equalTo: navBar.centerYAnchor),
+            historyButton.widthAnchor.constraint(equalToConstant: 32),
+            historyButton.heightAnchor.constraint(equalToConstant: 32),
+            
             logoutButton.trailingAnchor.constraint(equalTo: navBar.trailingAnchor, constant: -16),
             logoutButton.centerYAnchor.constraint(equalTo: navBar.centerYAnchor),
             logoutButton.widthAnchor.constraint(equalToConstant: 32),
@@ -175,6 +189,10 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
     
     @IBAction func qrButtonTapped(_ sender: UIButton) {
         coordinator?.presentQRScanScreen()
+    }
+    
+    @objc private func historyButtonTapped() {
+        coordinator?.presentPurchaseHistoryScreen()
     }
     
     @objc private func logoutButtonTapped() {

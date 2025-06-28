@@ -147,7 +147,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				2EC540172E0DD54F007E7E12 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				2E10D64D2E0F5C9700238C26 /* XCRemoteSwiftPackageReference "QRCodeReader.swift" */,
+				2E10D64D2E0F5C9700238C26 /* XCRemoteSwiftPackageReference "QRCodeReader" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2EC53FF72E0DD4A8007E7E12 /* Products */;
@@ -178,9 +178,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-El Buhonero/Pods-El Buhonero-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-El Buhonero/Pods-El Buhonero-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -439,7 +443,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2E10D64D2E0F5C9700238C26 /* XCRemoteSwiftPackageReference "QRCodeReader.swift" */ = {
+		2E10D64D2E0F5C9700238C26 /* XCRemoteSwiftPackageReference "QRCodeReader" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yannickl/QRCodeReader.swift";
 			requirement = {
@@ -460,7 +464,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		2E10D64E2E0F5C9700238C26 /* QRCodeReader */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2E10D64D2E0F5C9700238C26 /* XCRemoteSwiftPackageReference "QRCodeReader.swift" */;
+			package = 2E10D64D2E0F5C9700238C26 /* XCRemoteSwiftPackageReference "QRCodeReader" */;
 			productName = QRCodeReader;
 		};
 		2EC540182E0DD54F007E7E12 /* FirebaseAnalytics */ = {

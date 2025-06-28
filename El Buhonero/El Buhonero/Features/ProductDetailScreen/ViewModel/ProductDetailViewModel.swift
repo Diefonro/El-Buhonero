@@ -15,14 +15,14 @@ protocol ProductDetailViewModelDelegate: AnyObject {
 
 class ProductDetailViewModel {
     
-    private var product: HomeProduct?
+    private var privateProduct: HomeProduct?
     private let dataManager = DataManager.shared
     private let storesService = StoresServices()
     
     weak var delegate: ProductDetailViewModelDelegate?
     
     init(product: HomeProduct) {
-        self.product = product
+        self.privateProduct = product
     }
 
     init(productId: Int, country: String) {
@@ -38,7 +38,7 @@ class ProductDetailViewModel {
                 self.delegate?.loadingStateChanged(false)
                 
                 if success {
-                    if let product = self.product {
+                    if let product = self.privateProduct {
                         self.delegate?.productLoaded(product)
                     } else {
                         self.delegate?.productLoadFailed("Product not found")
@@ -53,7 +53,7 @@ class ProductDetailViewModel {
     private func fetchProductFromAPI(productId: Int, country: String) async -> Bool {
         // First check if we have the product in cache
         if let cachedProduct = getCachedProduct(productId: productId, country: country) {
-            self.product = cachedProduct
+            self.privateProduct = cachedProduct
             return true
         }
         
@@ -65,7 +65,7 @@ class ProductDetailViewModel {
             case .success(let products):
                 dataManager.storeAData = products
                 if let cachedProduct = getCachedProduct(productId: productId, country: country) {
-                    self.product = cachedProduct
+                    self.privateProduct = cachedProduct
                     return true
                 }
                 return false
@@ -78,7 +78,7 @@ class ProductDetailViewModel {
             case .success(let products):
                 dataManager.storeBData = products
                 if let cachedProduct = getCachedProduct(productId: productId, country: country) {
-                    self.product = cachedProduct
+                    self.privateProduct = cachedProduct
                     return true
                 }
                 return false
@@ -103,33 +103,33 @@ class ProductDetailViewModel {
     
     // MARK: - Product Data
     var productTitle: String {
-        return product?.title ?? "Loading..."
+        return privateProduct?.title ?? "Loading..."
     }
     
     var productPrice: String {
-        guard let product = product else { return "Loading..." }
+        guard let product = privateProduct else { return "Loading..." }
         return String(format: "$%.2f", product.price)
     }
     
     var productImageUrl: String {
-        return product?.imageUrl ?? ""
+        return privateProduct?.imageUrl ?? ""
     }
     
     var productDescription: String {
-        return product?.description ?? "No description available."
+        return privateProduct?.description ?? "No description available."
     }
     
     var productCategory: String {
-        return product?.category?.capitalized ?? "Uncategorized"
+        return privateProduct?.category?.capitalized ?? "Uncategorized"
     }
     
     var productId: Int {
-        return product?.id ?? 0
+        return privateProduct?.id ?? 0
     }
     
     // MARK: - UI Configuration
     var navigationTitle: String {
-        return product?.title ?? "Product Details"
+        return privateProduct?.title ?? "Product Details"
     }
     
     var formattedPrice: String {
@@ -149,7 +149,11 @@ class ProductDetailViewModel {
     }
     
     var hasProduct: Bool {
-        return product != nil
+        return privateProduct != nil
+    }
+    
+    var product: HomeProduct? {
+        return privateProduct
     }
 }
 

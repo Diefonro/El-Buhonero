@@ -67,4 +67,10 @@ class HomeScreenCoordinator: Coordinating {
             self.coordinator?.push(viewController: qrScanVC, animated: true)
         }
     }
+    
+    func presentPurchaseHistoryScreen() {
+        let purchaseHistoryVC = PurchaseHistoryHostingController()
+        self.coordinator?.hideNavigationBar(animated: true)
+        self.coordinator?.push(viewController: purchaseHistoryVC, animated: true)
+    }
 }

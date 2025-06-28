@@ -22,6 +22,7 @@ class ProductDetailScreenVC: UIViewController, StoryboardInfo {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var buyButton: UIButton!
     
     // MARK: - Properties
     var coordinator: ProductDetailScreenCoordinator?
@@ -42,6 +43,14 @@ class ProductDetailScreenVC: UIViewController, StoryboardInfo {
     private func setupUI() {
         loadingIndicator.isHidden = true
         loadingIndicator.hidesWhenStopped = true
+        
+        buyButton.setTitle("Buy", for: .normal)
+        buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        buyButton.backgroundColor = UIColor(red: 0.45, green: 0.6, blue: 0.13, alpha: 1.0)
+        buyButton.setTitleColor(.white, for: .normal)
+        buyButton.layer.cornerRadius = 25
+        buyButton.layer.masksToBounds = true
+        buyButton.addTarget(self, action: #selector(buyButtonTapped), for: .touchUpInside)
     }
     
     private func setupNavigationBar() {
@@ -95,6 +104,11 @@ class ProductDetailScreenVC: UIViewController, StoryboardInfo {
     
     func setViewModel(viewModel: ProductDetailViewModel) {
         self.viewModel = viewModel
+    }
+    
+    @objc private func buyButtonTapped() {
+        guard let product = viewModel?.product else { return }
+        coordinator?.presentPaymentScreen(product: product)
     }
 }
 
