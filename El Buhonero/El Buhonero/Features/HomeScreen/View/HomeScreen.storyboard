@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home ScreenVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="HomeScreenVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="HomeScreenVC" customModule="El_Buhonero" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" userLabel="MainView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nx6-34-BIl" userLabel="ContainerView">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="country-label">
+                                        <rect key="frame" x="50" y="10" width="197" height="36"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXQ-Yn-o8i" userLabel="CollectionViewContainer">
+                                        <rect key="frame" x="0.0" y="56" width="393" height="610"/>
+                                        <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zeI-DQ-I17">
+                                        <rect key="frame" x="257" y="23.333333333333332" width="20" height="9.9999999999999964"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="Imd-Wc-cJi"/>
+                                            <constraint firstAttribute="height" constant="20" id="qOc-qE-ocJ"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="fXQ-Yn-o8i" firstAttribute="leading" secondItem="Nx6-34-BIl" secondAttribute="leading" id="4qo-MO-I9P"/>
+                                    <constraint firstAttribute="trailing" secondItem="fXQ-Yn-o8i" secondAttribute="trailing" id="5nO-wE-0ZA"/>
+                                    <constraint firstItem="zeI-DQ-I17" firstAttribute="centerY" secondItem="country-label" secondAttribute="centerY" id="JsF-Jm-qGj"/>
+                                    <constraint firstItem="zeI-DQ-I17" firstAttribute="leading" secondItem="country-label" secondAttribute="trailing" constant="10" id="Lfy-1r-rtY"/>
+                                    <constraint firstItem="fXQ-Yn-o8i" firstAttribute="top" secondItem="country-label" secondAttribute="bottom" constant="10" id="MGu-YO-cmn"/>
+                                    <constraint firstItem="country-label" firstAttribute="leading" secondItem="Nx6-34-BIl" secondAttribute="leading" constant="50" id="mZC-lI-XC5"/>
+                                    <constraint firstItem="country-label" firstAttribute="top" secondItem="Nx6-34-BIl" secondAttribute="top" constant="10" id="oED-NX-EdV"/>
+                                    <constraint firstAttribute="bottom" secondItem="fXQ-Yn-o8i" secondAttribute="bottom" id="tNB-E8-Cqc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Nx6-34-BIl" secondAttribute="trailing" id="1GJ-DT-dmm"/>
+                            <constraint firstItem="Nx6-34-BIl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3ud-7t-nua"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Nx6-34-BIl" secondAttribute="bottom" id="Fj1-xB-wnX"/>
+                            <constraint firstItem="Nx6-34-BIl" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="HvE-Ss-41V"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chevronDownImage" destination="zeI-DQ-I17" id="5xX-At-WG2"/>
+                        <outlet property="collectionViewContainer" destination="fXQ-Yn-o8i" id="YVk-A6-gsj"/>
+                        <outlet property="countryLabel" destination="country-label" id="country-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="29.770992366412212" y="-28.169014084507044"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.down" catalog="system" width="128" height="70"/>
+    </resources>
+</document>
