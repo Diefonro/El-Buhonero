@@ -46,6 +46,11 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
     
     func setViewModel(viewModel: HomeScreenViewModel) {
         self.viewModel = viewModel
+        viewModel.onDataLoaded = { [weak self] in
+            DispatchQueue.main.async {
+                self?.collectionView?.reloadData()
+            }
+        }
         collectionView?.reloadData()
     }
     
@@ -78,7 +83,6 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
         collectionView.delegate = self
         collectionView.register(BannerCell.self, forCellWithReuseIdentifier: BannerCell.reuseIdentifier)
         collectionView.register(ProductCardCell.self, forCellWithReuseIdentifier: ProductCardCell.reuseIdentifier)
-        collectionView.register(SeeMoreCell.self, forCellWithReuseIdentifier: SeeMoreCell.reuseIdentifier)
         collectionView.register(CategoryHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryHeaderCell.reuseIdentifier)
     }
     
@@ -196,10 +200,8 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
     }
     
     @objc private func logoutButtonTapped() {
-        // Clear login state
         DataManager.shared.clearLoginState()
-        // Pop back to login screen
-        coordinator?.popToRootController(animated: true)
+        coordinator?.presentSelectCountryScreenForLogout()
     }
     
     @objc private func countryLabelTapped() {

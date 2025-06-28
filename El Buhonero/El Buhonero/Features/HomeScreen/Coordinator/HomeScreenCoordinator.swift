@@ -45,7 +45,20 @@ class HomeScreenCoordinator: Coordinating {
         selectCountryVC.setCoordinator(coordinator: selectCountryCoordinator)
         selectCountryVC.setViewModel(viewModel: SelectCountryViewModel())
         selectCountryVC.onCountryChanged = onCountryChanged
+        selectCountryVC.coordinator?.hideNavigationBar(animated: true)
+        self.coordinator?.hideNavigationBar(animated: false)
         self.coordinator?.push(viewController: selectCountryVC, animated: true)
+    }
+    
+    func presentSelectCountryScreenForLogout() {
+        let storyboard = UIStoryboard(name: SelectCountryScreenVC.storyboard, bundle: nil)
+        guard let selectCountryVC = storyboard.instantiateViewController(withIdentifier: SelectCountryScreenVC.identifier) as? SelectCountryScreenVC else { return }
+        let selectCountryCoordinator = SelectCountryScreenCoordinator(coordinator: self.coordinator)
+        selectCountryVC.setCoordinator(coordinator: selectCountryCoordinator)
+        selectCountryVC.setViewModel(viewModel: SelectCountryViewModel())
+        selectCountryVC.coordinator?.hideNavigationBar(animated: true)
+        self.coordinator?.hideNavigationBar(animated: false)
+        self.coordinator?.navigationController?.setViewControllers([selectCountryVC], animated: true)
     }
     
     func presentProductDetailScreen(product: HomeProduct) {

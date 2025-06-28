@@ -43,7 +43,13 @@ class LoginScreenCoordinator: Coordinating {
             .instantiateViewController(withIdentifier: HomeScreenVC.identifier) as? HomeScreenVC {
             homeScreen.setCoordinator(coordinator: HomeScreenCoordinator(coordinator: self.coordinator))
             homeScreen.setViewModel(viewModel: HomeScreenViewModel())
-            self.coordinator?.push(viewController: homeScreen, animated: true)
+            
+            // Replace the current view controller stack with home screen
+            // This ensures no back button appears
+            self.coordinator?.navigationController?.setViewControllers([homeScreen], animated: true)
+            
+            // Hide navigation bar for home screen
+            self.coordinator?.hideNavigationBar(animated: true)
         }
     }
 } 

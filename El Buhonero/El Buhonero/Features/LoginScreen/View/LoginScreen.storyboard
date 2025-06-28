@@ -91,66 +91,13 @@
                                         <rect key="frame" x="186.66666666666666" y="348" width="20" height="10"/>
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="social-login-view" userLabel="SocialLogin">
-                                        <rect key="frame" x="50" y="378" width="293" height="110"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="social-stack-view">
-                                                <rect key="frame" x="0.0" y="0.0" width="293" height="110"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="google-login-button">
-                                                        <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="google-button-height"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Login with Google"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="Login with Google"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="8"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="googleLoginButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="google-button-action"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apple-login-button">
-                                                        <rect key="frame" x="0.0" y="60" width="293" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="apple-button-height"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Login with Apple"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="Login with Apple"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="8"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="appleLoginButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="apple-button-action"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="social-stack-view" secondAttribute="bottom" id="social-stack-bottom"/>
-                                            <constraint firstItem="social-stack-view" firstAttribute="leading" secondItem="social-login-view" secondAttribute="leading" id="social-stack-leading"/>
-                                            <constraint firstItem="social-stack-view" firstAttribute="top" secondItem="social-login-view" secondAttribute="top" id="social-stack-top"/>
-                                            <constraint firstAttribute="trailing" secondItem="social-stack-view" secondAttribute="trailing" id="social-stack-trailing"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.047058823530000002" green="0.047058823530000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="qgp-Bg-aAr" firstAttribute="centerX" secondItem="gTR-TE-gaC" secondAttribute="centerX" id="NPc-by-vi5"/>
-                                    <constraint firstItem="social-login-view" firstAttribute="top" secondItem="qgp-Bg-aAr" secondAttribute="bottom" constant="20" id="gfs-fq-xpc"/>
                                     <constraint firstItem="login-form-view" firstAttribute="leading" secondItem="gTR-TE-gaC" secondAttribute="leading" constant="50" id="login-form-leading"/>
                                     <constraint firstItem="login-form-view" firstAttribute="top" secondItem="subtitle-label" secondAttribute="bottom" constant="40" id="login-form-top"/>
                                     <constraint firstAttribute="trailing" secondItem="login-form-view" secondAttribute="trailing" constant="50" id="login-form-trailing"/>
-                                    <constraint firstItem="social-login-view" firstAttribute="leading" secondItem="gTR-TE-gaC" secondAttribute="leading" constant="50" id="social-login-leading"/>
-                                    <constraint firstItem="social-login-view" firstAttribute="top" secondItem="login-form-view" secondAttribute="bottom" constant="50" id="social-login-top"/>
-                                    <constraint firstAttribute="trailing" secondItem="social-login-view" secondAttribute="trailing" constant="50" id="social-login-trailing"/>
                                     <constraint firstItem="subtitle-label" firstAttribute="leading" secondItem="gTR-TE-gaC" secondAttribute="leading" constant="50" id="subtitle-leading"/>
                                     <constraint firstItem="subtitle-label" firstAttribute="top" secondItem="Hvc-al-aTY" secondAttribute="bottom" constant="10" id="subtitle-top"/>
                                     <constraint firstAttribute="trailing" secondItem="subtitle-label" secondAttribute="trailing" constant="50" id="subtitle-trailing"/>
@@ -172,9 +119,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="qgp-Bg-aAr" id="oVN-lI-Ovu"/>
-                        <outlet property="appleLoginButton" destination="apple-login-button" id="apple-button-outlet"/>
                         <outlet property="errorLabel" destination="error-label" id="error-label-outlet"/>
-                        <outlet property="googleLoginButton" destination="google-login-button" id="google-button-outlet"/>
                         <outlet property="loginButton" destination="login-button" id="login-button-outlet"/>
                         <outlet property="passwordTextField" destination="password-textfield" id="password-outlet"/>
                         <outlet property="usernameTextField" destination="username-textfield" id="username-outlet"/>
