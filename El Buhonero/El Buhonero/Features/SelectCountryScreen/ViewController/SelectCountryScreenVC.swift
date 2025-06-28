@@ -50,10 +50,18 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo {
             DispatchQueue.main.async { [weak self] in
                 self?.activityIndicator.stopAnimating()
                 self?.onCountryChanged?()
-                if DataManager.shared.isUserLoggedIn() {
+                
+                // If onCountryChanged is set, we're coming from home screen
+                // Just pop back to home screen without checking login
+                if self?.onCountryChanged != nil {
                     self?.coordinator?.pop(animated: true)
                 } else {
-                    self?.goToLogin()
+                    // Initial app flow - check login status
+                    if DataManager.shared.isUserLoggedIn() {
+                        self?.coordinator?.pushToHomeScreen()
+                    } else {
+                        self?.goToLogin()
+                    }
                 }
             }
         }
@@ -68,10 +76,18 @@ class SelectCountryScreenVC: UIViewController, StoryboardInfo {
             DispatchQueue.main.async { [weak self] in
                 self?.activityIndicator.stopAnimating()
                 self?.onCountryChanged?()
-                if DataManager.shared.isUserLoggedIn() {
+                
+                // If onCountryChanged is set, we're coming from home screen
+                // Just pop back to home screen without checking login
+                if self?.onCountryChanged != nil {
                     self?.coordinator?.pop(animated: true)
                 } else {
-                    self?.goToLogin()
+                    // Initial app flow - check login status
+                    if DataManager.shared.isUserLoggedIn() {
+                        self?.coordinator?.pushToHomeScreen()
+                    } else {
+                        self?.goToLogin()
+                    }
                 }
             }
         }

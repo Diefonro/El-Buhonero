@@ -59,6 +59,24 @@
                                                 <color key="textColor" white="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buyButton">
+                                                <rect key="frame" x="20" y="852" width="353" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="buyButtonHeight"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Buy">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <color key="backgroundColor" red="0.45000000000000001" green="0.59999999999999998" blue="0.13" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.050000000000000003" green="0.050000000000000003" blue="0.050000000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -69,7 +87,6 @@
                                             <constraint firstItem="categoryLabel" firstAttribute="top" secondItem="priceLabel" secondAttribute="bottom" constant="16" id="categoryTop"/>
                                             <constraint firstAttribute="trailing" secondItem="categoryLabel" secondAttribute="trailing" constant="20" id="categoryTrailing"/>
                                             <constraint firstAttribute="width" secondItem="scrollView" secondAttribute="width" id="contentWidth"/>
-                                            <constraint firstItem="descriptionLabel" firstAttribute="bottom" secondItem="contentView" secondAttribute="bottom" constant="20" id="descriptionBottom"/>
                                             <constraint firstItem="descriptionLabel" firstAttribute="top" secondItem="idLabel" secondAttribute="bottom" constant="20" id="descriptionTop"/>
                                             <constraint firstAttribute="trailing" secondItem="descriptionLabel" secondAttribute="trailing" constant="20" id="descriptionTrailing"/>
                                             <constraint firstItem="descriptionLabel" firstAttribute="leading" secondItem="contentView" secondAttribute="leading" constant="20" id="fBP-ua-gIe"/>
@@ -82,6 +99,10 @@
                                             <constraint firstItem="titleLabel" firstAttribute="top" secondItem="productImageView" secondAttribute="bottom" constant="20" id="titleTop"/>
                                             <constraint firstAttribute="trailing" secondItem="titleLabel" secondAttribute="trailing" constant="20" id="titleTrailing"/>
                                             <constraint firstItem="idLabel" firstAttribute="leading" secondItem="contentView" secondAttribute="leading" constant="20" id="upI-Iy-grZ"/>
+                                            <constraint firstItem="buyButton" firstAttribute="top" secondItem="descriptionLabel" secondAttribute="bottom" constant="30" id="buyButtonTop"/>
+                                            <constraint firstItem="buyButton" firstAttribute="leading" secondItem="contentView" secondAttribute="leading" constant="20" id="buyButtonLeading"/>
+                                            <constraint firstAttribute="trailing" secondItem="buyButton" secondAttribute="trailing" constant="20" id="buyButtonTrailing"/>
+                                            <constraint firstItem="buyButton" firstAttribute="bottom" secondItem="contentView" secondAttribute="bottom" constant="20" id="buyButtonBottom"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -92,6 +113,14 @@
                                     <constraint firstItem="contentView" firstAttribute="trailing" secondItem="scrollView" secondAttribute="trailing" id="contentTrailing"/>
                                 </constraints>
                             </scrollView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="NO" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="loadingIndicator">
+                                <rect key="frame" x="176.66666666666666" y="406" width="40" height="40"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="loadingWidth"/>
+                                    <constraint firstAttribute="height" constant="40" id="loadingHeight"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.050000000000000003" green="0.050000000000000003" blue="0.050000000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -100,14 +129,18 @@
                             <constraint firstItem="scrollView" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="scrollLeading"/>
                             <constraint firstItem="scrollView" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="scrollTop"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="scrollView" secondAttribute="trailing" id="scrollTrailing"/>
+                            <constraint firstItem="loadingIndicator" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="loadingCenterX"/>
+                            <constraint firstItem="loadingIndicator" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="loadingCenterY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Product Detail" id="navigationItem"/>
                     <connections>
+                        <outlet property="buyButton" destination="buyButton" id="buyButtonOutlet"/>
                         <outlet property="categoryLabel" destination="categoryLabel" id="categoryOutlet"/>
                         <outlet property="contentView" destination="contentView" id="contentOutlet"/>
                         <outlet property="descriptionLabel" destination="descriptionLabel" id="descriptionOutlet"/>
                         <outlet property="idLabel" destination="idLabel" id="idOutlet"/>
+                        <outlet property="loadingIndicator" destination="loadingIndicator" id="loadingOutlet"/>
                         <outlet property="priceLabel" destination="priceLabel" id="priceOutlet"/>
                         <outlet property="productImageView" destination="productImageView" id="imageOutlet"/>
                         <outlet property="scrollView" destination="scrollView" id="scrollOutlet"/>

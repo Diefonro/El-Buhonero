@@ -14,6 +14,23 @@ class ProductDetailScreenCoordinator: Coordinating {
         self.coordinator = coordinator
     }
     
+    func start(with product: HomeProduct) {
+
+    }
+    
+    func start(with productId: Int, country: String) {
+
+    }
+    
+    func presentPaymentScreen(product: HomeProduct) {
+        if let paymentScreen = UIStoryboard(name: PaymentScreenVC.storyboard, bundle: nil)
+            .instantiateViewController(withIdentifier: PaymentScreenVC.identifier) as? PaymentScreenVC {
+            paymentScreen.setCoordinator(coordinator: PaymentScreenCoordinator(coordinator: self.coordinator))
+            paymentScreen.setViewModel(viewModel: PaymentScreenViewModel(product: product))
+            self.coordinator?.push(viewController: paymentScreen, animated: true)
+        }
+    }
+    
     func showNavigationBar(animated: Bool = false) {
         self.coordinator?.showNavigationBar(animated: animated)
     }

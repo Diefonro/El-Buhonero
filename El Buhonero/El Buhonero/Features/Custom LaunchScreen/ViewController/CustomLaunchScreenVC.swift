@@ -30,7 +30,35 @@ class CustomLaunchScreenVC: UIViewController, StoryboardInfo, Coordinating {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            self.pushToCountriesScreen()
+            self.checkSessionAndNavigate()
+        }
+    }
+    
+    private func checkSessionAndNavigate() {
+        let dataManager = DataManager.shared
+        
+        // Check if user is logged in and has selected a country
+        if dataManager.isUserLoggedIn() && dataManager.selectedCountry != .none {
+            // User is logged in and has a country selected, go directly to home
+            navigateToHomeScreen()
+        } else {
+            // User needs to select country and/or login
+            pushToCountriesScreen()
+        }
+    }
+    
+    private func navigateToHomeScreen() {
+        if let homeScreen = UIStoryboard(name: HomeScreenVC.storyboard, bundle: nil)
+            .instantiateViewController(withIdentifier: HomeScreenVC.identifier) as? HomeScreenVC {
+            homeScreen.setCoordinator(coordinator: HomeScreenCoordinator(coordinator: self.coordinator))
+            homeScreen.setViewModel(viewModel: HomeScreenViewModel())
+            
+            // Replace the current view controller stack with home screen
+            // This ensures no back button appears
+            self.coordinator?.navigationController?.setViewControllers([homeScreen], animated: true)
+            
+            // Hide navigation bar for home screen
+            self.coordinator?.hideNavigationBar(animated: true)
         }
     }
     

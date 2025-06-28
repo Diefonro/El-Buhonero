@@ -14,6 +14,10 @@ struct HomeProduct {
     let imageUrl: String
     let category: String?
     let description: String?
+    
+    var formattedPrice: String {
+        return String(format: "$%.2f", price)
+    }
 }
 
 enum HomeSection {
@@ -24,11 +28,17 @@ enum HomeSection {
 
 class HomeScreenViewModel {
     private let dataManager = DataManager.shared
+    private let storesService = StoresServices()
     private(set) var sections: [HomeSection] = []
     private(set) var allProducts: [HomeProduct] = []
+    var onDataLoaded: (() -> Void)?
     
     init() {
         loadProducts()
+        // Fetch fresh data from API when view model is created
+        Task {
+            await loadDataFromAPI()
+        }
     }
     
     private func loadProducts() {
@@ -62,6 +72,37 @@ class HomeScreenViewModel {
         case .none:
             allProducts = []
             sections = []
+        }
+    }
+    
+    private func loadDataFromAPI() async {
+        switch dataManager.selectedCountry {
+        case .countryA:
+            let result = await storesService.getStoreAProducts()
+            switch result {
+            case .success(let data):
+                dataManager.storeAData = data
+                await MainActor.run {
+                    loadProducts()
+                    onDataLoaded?()
+                }
+            case .failure(let error):
+                print("StoreA fetch error: \(error)")
+            }
+        case .countryB:
+            let result = await storesService.getStoreBProducts()
+            switch result {
+            case .success(let data):
+                dataManager.storeBData = data
+                await MainActor.run {
+                    loadProducts()
+                    onDataLoaded?()
+                }
+            case .failure(let error):
+                print("StoreB fetch error: \(error)")
+            }
+        case .none:
+            break
         }
     }
     
@@ -104,9 +145,9 @@ class HomeScreenViewModel {
         case .banner(let products):
             return products.count
         case .category(_, let products):
-            return products.count + 1 // +1 for See More
+            return products.count
         case .uncategorized(let products):
-            return products.count + 1
+            return products.count
         }
     }
     
@@ -116,21 +157,7 @@ class HomeScreenViewModel {
         case .banner(let products):
             return products[indexPath.item]
         case .category(_, let products), .uncategorized(let products):
-            if indexPath.item < products.count {
-                return products[indexPath.item]
-            } else {
-                return nil // See More cell
-            }
-        }
-    }
-    
-    func isSeeMoreCell(at indexPath: IndexPath) -> Bool {
-        let section = sections[indexPath.section]
-        switch section {
-        case .banner:
-            return false
-        case .category(_, let products), .uncategorized(let products):
-            return indexPath.item == products.count
+            return products[indexPath.item]
         }
     }
     
@@ -144,6 +171,8 @@ class HomeScreenViewModel {
     }
     
     func reloadData() {
-        loadProducts()
+        Task {
+            await loadDataFromAPI()
+        }
     }
 } 

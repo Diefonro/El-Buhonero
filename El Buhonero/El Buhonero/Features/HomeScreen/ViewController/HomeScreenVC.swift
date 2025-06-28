@@ -46,6 +46,11 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
     
     func setViewModel(viewModel: HomeScreenViewModel) {
         self.viewModel = viewModel
+        viewModel.onDataLoaded = { [weak self] in
+            DispatchQueue.main.async {
+                self?.collectionView?.reloadData()
+            }
+        }
         collectionView?.reloadData()
     }
     
@@ -78,7 +83,6 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
         collectionView.delegate = self
         collectionView.register(BannerCell.self, forCellWithReuseIdentifier: BannerCell.reuseIdentifier)
         collectionView.register(ProductCardCell.self, forCellWithReuseIdentifier: ProductCardCell.reuseIdentifier)
-        collectionView.register(SeeMoreCell.self, forCellWithReuseIdentifier: SeeMoreCell.reuseIdentifier)
         collectionView.register(CategoryHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryHeaderCell.reuseIdentifier)
     }
     
@@ -153,6 +157,14 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
         qrButton.addTarget(self, action: #selector(qrButtonTapped), for: .touchUpInside)
         navBar.addSubview(qrButton)
         
+        // Purchase History Button
+        let historyButton = UIButton(type: .system)
+        historyButton.translatesAutoresizingMaskIntoConstraints = false
+        historyButton.setImage(UIImage(systemName: "clock.arrow.circlepath"), for: .normal)
+        historyButton.tintColor = .white
+        historyButton.addTarget(self, action: #selector(historyButtonTapped), for: .touchUpInside)
+        navBar.addSubview(historyButton)
+        
         // Logout Button
         let logoutButton = UIButton(type: .system)
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
@@ -162,10 +174,16 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
         navBar.addSubview(logoutButton)
         
         NSLayoutConstraint.activate([
-            qrButton.centerXAnchor.constraint(equalTo: navBar.centerXAnchor),
+            qrButton.leadingAnchor.constraint(equalTo: navBar.leadingAnchor, constant: 16),
             qrButton.centerYAnchor.constraint(equalTo: navBar.centerYAnchor),
             qrButton.widthAnchor.constraint(equalToConstant: 32),
             qrButton.heightAnchor.constraint(equalToConstant: 32),
+            
+            historyButton.centerXAnchor.constraint(equalTo: navBar.centerXAnchor),
+            historyButton.centerYAnchor.constraint(equalTo: navBar.centerYAnchor),
+            historyButton.widthAnchor.constraint(equalToConstant: 32),
+            historyButton.heightAnchor.constraint(equalToConstant: 32),
+            
             logoutButton.trailingAnchor.constraint(equalTo: navBar.trailingAnchor, constant: -16),
             logoutButton.centerYAnchor.constraint(equalTo: navBar.centerYAnchor),
             logoutButton.widthAnchor.constraint(equalToConstant: 32),
@@ -173,15 +191,17 @@ class HomeScreenVC: UIViewController, StoryboardInfo {
         ])
     }
     
-    @objc private func qrButtonTapped() {
-        print("QR button tapped - show QR view (to be implemented)")
+    @IBAction func qrButtonTapped(_ sender: UIButton) {
+        coordinator?.presentQRScanScreen()
+    }
+    
+    @objc private func historyButtonTapped() {
+        coordinator?.presentPurchaseHistoryScreen()
     }
     
     @objc private func logoutButtonTapped() {
-        // Clear login state
         DataManager.shared.clearLoginState()
-        // Pop back to login screen
-        coordinator?.popToRootController(animated: true)
+        coordinator?.presentSelectCountryScreenForLogout()
     }
     
     @objc private func countryLabelTapped() {

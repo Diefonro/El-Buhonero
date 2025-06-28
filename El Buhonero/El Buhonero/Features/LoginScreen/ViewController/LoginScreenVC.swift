@@ -20,8 +20,6 @@ class LoginScreenVC: UIViewController, StoryboardInfo {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var googleLoginButton: UIButton!
-    @IBOutlet weak var appleLoginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -56,16 +54,6 @@ class LoginScreenVC: UIViewController, StoryboardInfo {
         loginButton.backgroundColor = .systemBlue
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.layer.cornerRadius = 8
-        
-        googleLoginButton.setTitle("Login with Google", for: .normal)
-        googleLoginButton.backgroundColor = .systemRed
-        googleLoginButton.setTitleColor(.white, for: .normal)
-        googleLoginButton.layer.cornerRadius = 8
-        
-        appleLoginButton.setTitle("Login with Apple", for: .normal)
-        appleLoginButton.backgroundColor = .black
-        appleLoginButton.setTitleColor(.white, for: .normal)
-        appleLoginButton.layer.cornerRadius = 8
         
         errorLabel.textColor = .systemRed
         errorLabel.textAlignment = .center
@@ -108,16 +96,6 @@ class LoginScreenVC: UIViewController, StoryboardInfo {
         hideError()
         startLoading()
         viewModel?.login(username: username, password: password)
-    }
-    
-    @IBAction func googleLoginButtonTapped(_ sender: Any) {
-        // TODO: Implement Google login with Firebase Auth
-        print("Google login tapped")
-    }
-    
-    @IBAction func appleLoginButtonTapped(_ sender: Any) {
-        // TODO: Implement Apple login with Firebase Auth
-        print("Apple login tapped")
     }
     
     // MARK: - Helper Methods
